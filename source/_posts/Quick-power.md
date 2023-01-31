@@ -15,7 +15,7 @@ categories: Algorithm
 
 以下是快速幂的代码：
 
-```
+```cpp
 int qpow(int a, lint n) {
     int ans = 1;
     while(n) {

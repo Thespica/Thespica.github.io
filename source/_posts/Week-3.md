@@ -1,6 +1,6 @@
 ---
 title: Week 3
-date: 2023-01-16 19:49:44
+date: 2023-01-23 19:49:44
 tags: 
 categories: SMU Winter 2023
 ---
