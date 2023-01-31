@@ -1,7 +1,7 @@
 ---
 title: Week 1
 date: 2023-01-8 01:44:49
-tags: Algorithm
+tags: 
 categories: SMU Winter 2023
 ---
 # Day 1

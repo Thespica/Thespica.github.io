@@ -7,7 +7,7 @@ categories: Algorithm
 
 ![](https://picx.zhimg.com/v2-ea509638c045734248f877b052aa21ac_1440w.jpg?source=172ae18b)
 
-对于 $ a^n$，如果用一个 n 次，每次乘 m 的循环来计算，时间复杂度为 $O(n)$。<!--readmore-->
+对于 $ a^n$，如果用一个 n 次，每次乘 m 的循环来计算，时间复杂度为 $O(n)$。<!-- readmore -->
 
 然而每次算一个这么小的数，重复算这么多次，也太屈计算机之才了。借用二分的思维，每次都把 n 对半分，就可以优化到 $O(\log n)$。
 

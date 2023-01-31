@@ -95,6 +95,57 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/01/31/Quick-power/">Quick power</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-01-31
+        </span><span class="post-category">
+            <a href="/categories/Algorithm/">Algorithm</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://picx.zhimg.com/v2-ea509638c045734248f877b052aa21ac_1440w.jpg?source=172ae18b"></p>
+<p>对于 $ a^n$，如果用一个 n 次，每次乘 m 的循环来计算，时间复杂度为 $O(n)$。<!-- readmore --></p>
+<p>然而每次算一个这么小的数，重复算这么多次，也太屈计算机之才了。借用二分的思维，每次都把 n 对半分，就可以优化到 $O(\log n)$。</p>
+<p>然而这还是不够，一方面不是每次 n 都可以对半分，奇偶讨论很麻烦；另一方面递归会占用额外的内存。这时候就可以<strong>把二分和二进制联系起来</strong>：n 可以被表示为二进制形式，因此 $a^n$ 可以被转化为为许多可被二分的数的连乘，此时就非常方便表示了。</p>
+<p>以下是快速幂的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, lint n) &#123;</span><br><span class="line">    int ans = 1;</span><br><span class="line">    while(n) &#123;</span><br><span class="line">        if (n &amp; 1) ans *= a;</span><br><span class="line">        a *= a;</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外</p>
+<ul>
+<li>如需取模，步步取模，注意开 <code>long long</code>（其实大多都要取模，不然直接用 <code>pow()</code> 函数了）;</li>
+<li>不仅是快速幂，类似的运算也可以用到这样<strong>二分联系二进制</strong>的思想。</li>
+</ul>
+<p>参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95902286">知乎 Pecco</a> </p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/01/31/N-%E7%9A%87%E5%90%8E/">N 皇后</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-01-31
+        </span><span class="post-category">
+            <a href="/categories/Algorithm/">Algorithm</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h1 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h1><p>不妨以树的抽象结构来思考所有可能的情况：由于每一行最多且必须放一个皇后，因此一行一行地放不仅简化了步骤，更方便按行枚举；又由于 N 皇后是不确定的，使用递归便于控制循环。<!-- readmore --></p>
+<h1 id="剪枝优化"><a href="#剪枝优化" class="headerlink" title="剪枝优化"></a>剪枝优化</h1><p>「剪枝」一词十分贴切，剪的是树的一个节点，剪下的是这个节点后面所有的枝。如果某一个位置冲突了，后面的行必定冲突，直接跳出以减少时间的浪费。开一个一维数组存放每层的皇后的列，基于前面皇后的位置，编写一个用于判断某位置是否与前面冲突的函数。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>一开始自作聪明，想着走过的路不必再走，每一层从 <code>queen[row]</code> 开始。然而这是错误的，换一个角度看：每一层都来自上一层的递归，既然才递过来，后面的路都是没有走过的，因此都要从头走。之前的错误在于走到最后不退回去，循环变成一次性的了。以下是代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 17</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> N;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> sum;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">queen</span><span class="params">(MAXN, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">conflict</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> cow)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (queen[i] == cow || row - i == <span class="built_in">abs</span>(cow - queen[i])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(<span class="type">int</span> row)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row &gt;= N) &#123;</span><br><span class="line">        sum++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">conflict</span>(row, i)) &#123;</span><br><span class="line">            queen[row] = i;</span><br><span class="line">            <span class="built_in">DFS</span>(row + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; N;</span><br><span class="line">    <span class="built_in">DFS</span>(<span class="number">0</span>);</span><br><span class="line">    cout &lt;&lt; sum;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，如果追求更高的速度，可以开一个二位数组记录冲突情况，随用随取，避免了 <code>conflict()</code> 函数的运算时间。如果对性能有更高的追求，位运算也大有用武之地。我嘛，就先咕咕咕了。</p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2023/01/16/Week-3/">Week 3</a>
         </h1>
 
