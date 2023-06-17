@@ -95,134 +95,203 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2023/01/31/Quick-power/">Quick power</a>
+      <h1 class="post-title"><a class="post-link" href="/2023/06/16/Make-and-install-a-C-C-dynamic-link-library/">Build a C/C++ dynamic-link library</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2023-01-31
+          2023-06-16
         </span><span class="post-category">
-            <a href="/categories/Algorithm/">Algorithm</a>
+            <a href="/categories/Default/">Default</a>
             </span>
         </div>
     </header>
 
-    <div class="post-content"><p><img src="https://picx.zhimg.com/v2-ea509638c045734248f877b052aa21ac_1440w.jpg?source=172ae18b"></p>
-<p>对于 $ a^n$，如果用一个 n 次，每次乘 m 的循环来计算，时间复杂度为 $O(n)$。<!-- readmore --></p>
-<p>然而每次算一个这么小的数，重复算这么多次，也太屈计算机之才了。借用二分的思维，每次都把 n 对半分，就可以优化到 $O(\log n)$。</p>
-<p>然而这还是不够，一方面不是每次 n 都可以对半分，奇偶讨论很麻烦；另一方面递归会占用额外的内存。这时候就可以<strong>把二分和二进制联系起来</strong>：n 可以被表示为二进制形式，因此 $a^n$ 可以被转化为为许多可被二分的数的连乘，此时就非常方便表示了。</p>
-<p>以下是快速幂的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int qpow(int a, lint n) &#123;</span><br><span class="line">    int ans = 1;</span><br><span class="line">    while(n) &#123;</span><br><span class="line">        if (n &amp; 1) ans *= a;</span><br><span class="line">        a *= a;</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="post-content"><p>Sometimes we need to provide or use a third-party C&#x2F;C++ dynamic-link libraries. This blog aims to teach how to build, install and use a C&#x2F;C++ dynamic-link library.
+          <div class="read-more">
+            <a href="/2023/06/16/Make-and-install-a-C-C-dynamic-link-library/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/04/20/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%B7%E8%B4%9D/">对象的拷贝</a>
+        </h1>
 
-<p>此外</p>
+      <div class="post-meta">
+        <span class="post-time">
+          2023-04-20
+        </span><span class="post-category">
+            <a href="/categories/Default/">Default</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h1 id="基本类型的「值拷贝」与「引用拷贝」"><a href="#基本类型的「值拷贝」与「引用拷贝」" class="headerlink" title="基本类型的「值拷贝」与「引用拷贝」"></a>基本类型的「值拷贝」与「引用拷贝」</h1><p>对象的状态由基本类型定义而来，搞清基本类型的两种拷贝（传递）方式将有助于推导出对象的传递方式。
+          <div class="read-more">
+            <a href="/2023/04/20/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%B7%E8%B4%9D/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/04/12/Main-social-media-platforms-in-China/">Main social media platforms in China</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-04-12
+        </span><span class="post-category">
+            <a href="/categories/Default/">Default</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>China is the world’s largest social media market with highly engaged and mobile-savvy users. Its market composition varies considerably from the rest of the world. Due to the “Great Firewall” of China, as the Chinese government’s internet censorship project is commonly called, Facebook, Twitter, YouTube and other leading international social media players, are all blocked in the country.
+          <div class="read-more">
+            <a href="/2023/04/12/Main-social-media-platforms-in-China/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/03/19/%E5%86%AC%E8%AE%AD%E8%90%A5%E6%80%BB%E7%BB%93/">冬训营总结</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-03-19
+        </span><span class="post-category">
+            <a href="/categories/SMU-%E5%86%AC%E8%AE%AD%E8%90%A5-2023/">SMU 冬训营 2023</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>冬训营在第六周，也就是二月底左右，就结束了。当时说要总结，因为事比较多就一直拖着。昨天（3 月 18 日）连校赛都打完了，也是时候为冬训营做总结了。
+          <div class="read-more">
+            <a href="/2023/03/19/%E5%86%AC%E8%AE%AD%E8%90%A5%E6%80%BB%E7%BB%93/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/03/13/%E6%98%BE%E7%A4%BA%E5%99%A8%E9%80%89%E8%B4%AD%E5%8F%82%E8%80%83/">显示器选购参考</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-03-13
+        </span></div>
+    </header>
+
+    <div class="post-content"><h1 id="护眼"><a href="#护眼" class="headerlink" title="护眼"></a>护眼</h1><h2 id="频闪"><a href="#频闪" class="headerlink" title="频闪"></a>频闪</h2><p>DC 直流调光更好。PWM 调光的屏幕会频繁亮灭，容易使眼睛疲劳。
+          <div class="read-more">
+            <a href="/2023/03/13/%E6%98%BE%E7%A4%BA%E5%99%A8%E9%80%89%E8%B4%AD%E5%8F%82%E8%80%83/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/03/10/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/">大学物理</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-03-10
+        </span><span class="post-category">
+            <a href="/categories/%E5%AD%A6%E7%A7%91%E7%AC%94%E8%AE%B0/">学科笔记</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h1 id="1-质点运动学"><a href="#1-质点运动学" class="headerlink" title="1 质点运动学"></a>1 质点运动学</h1><h2 id="1-1-质点及其运动描述"><a href="#1-1-质点及其运动描述" class="headerlink" title="1.1 质点及其运动描述"></a>1.1 质点及其运动描述</h2><h3 id="1-1-1-质点及其有关概念"><a href="#1-1-1-质点及其有关概念" class="headerlink" title="1.1.1 质点及其有关概念"></a>1.1.1 质点及其有关概念</h3><p>定义：</p>
 <ul>
-<li>如需取模，步步取模，注意开 <code>long long</code>（其实大多都要取模，不然直接用 <code>pow()</code> 函数了）;</li>
-<li>不仅是快速幂，类似的运算也可以用到这样<strong>二分联系二进制</strong>的思想。</li>
-</ul>
-<p>参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95902286">知乎 Pecco</a> </p>
-
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2023/01/31/N-%E7%9A%87%E5%90%8E/">N 皇后</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-01-31
-        </span><span class="post-category">
-            <a href="/categories/Algorithm/">Algorithm</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h1 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h1><p>不妨以树的抽象结构来思考所有可能的情况：由于每一行最多且必须放一个皇后，因此一行一行地放不仅简化了步骤，更方便按行枚举；又由于 N 皇后是不确定的，使用递归便于控制循环。<!-- readmore --></p>
-<h1 id="剪枝优化"><a href="#剪枝优化" class="headerlink" title="剪枝优化"></a>剪枝优化</h1><p>「剪枝」一词十分贴切，剪的是树的一个节点，剪下的是这个节点后面所有的枝。如果某一个位置冲突了，后面的行必定冲突，直接跳出以减少时间的浪费。开一个一维数组存放每层的皇后的列，基于前面皇后的位置，编写一个用于判断某位置是否与前面冲突的函数。</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>一开始自作聪明，想着走过的路不必再走，每一层从 <code>queen[row]</code> 开始。然而这是错误的，换一个角度看：每一层都来自上一层的递归，既然才递过来，后面的路都是没有走过的，因此都要从头走。之前的错误在于走到最后不退回去，循环变成一次性的了。以下是代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 17</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> N;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> sum;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">queen</span><span class="params">(MAXN, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">conflict</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> cow)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (queen[i] == cow || row - i == <span class="built_in">abs</span>(cow - queen[i])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(<span class="type">int</span> row)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row &gt;= N) &#123;</span><br><span class="line">        sum++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">conflict</span>(row, i)) &#123;</span><br><span class="line">            queen[row] = i;</span><br><span class="line">            <span class="built_in">DFS</span>(row + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; N;</span><br><span class="line">    <span class="built_in">DFS</span>(<span class="number">0</span>);</span><br><span class="line">    cout &lt;&lt; sum;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此外，如果追求更高的速度，可以开一个二位数组记录冲突情况，随用随取，避免了 <code>conflict()</code> 函数的运算时间。如果对性能有更高的追求，位运算也大有用武之地。我嘛，就先咕咕咕了。</p>
-
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2023/01/16/Week-3/">Week 3</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-01-16
-        </span><span class="post-category">
-            <a href="/categories/SMU-Winter-2023/">SMU Winter 2023</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>上周五的英文赛打的还可以，因此获得了这周一参加牛客寒假训练营的机会。第一次三个人组队一起做题，一共 AC 了五道。其实也许可以罚时更少、AC 更多，但是我们确实被出题人精心设计的诈骗给误导了。回过头看，题都是好题，并没有因为被诈骗而太失落，反而有了一种“下次一定可以看破题目，做对更多”的自信。
+<li>质点（mass point）是指值只有质量而没有体积和形状的点，是一种理想的物理模型；
           <div class="read-more">
-            <a href="/2023/01/16/Week-3/" class="read-more-link">Read more..</a>
+            <a href="/2023/03/10/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2023/01/15/Week-2/">Week 2</a>
+      <h1 class="post-title"><a class="post-link" href="/2023/03/01/%E9%AB%98%E6%95%B0%E4%B8%8A/">高数上</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2023-01-15
+          2023-03-01
         </span><span class="post-category">
-            <a href="/categories/SMU-Winter-2023/">SMU Winter 2023</a>
+            <a href="/categories/%E5%AD%A6%E7%A7%91%E7%AC%94%E8%AE%B0/">学科笔记</a>
             </span>
         </div>
     </header>
 
-    <div class="post-content"><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>题单：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/contest/95104#problems">蓝桥杯模拟赛 2</a> </p>
-<p>这次的节奏还可以，没有莫名其妙地浪费大把时间 debug。虽然一直知道排名不重要，但是看到自己是 19 名的那一下还是有点小失落的。只是一些不合理的情绪吧，我也没怎么学算法，又凭什么做得比别人好呢？其实，我并不觉得这次做得差，只是多亏了这次题目的描述过于严谨、精美和符合语境逻辑。
+    <div class="post-content"><h1 id="1-极限"><a href="#1-极限" class="headerlink" title="1 极限"></a>1 极限</h1><h2 id="1-1-极限的概念"><a href="#1-1-极限的概念" class="headerlink" title="1.1 极限的概念"></a>1.1 极限的概念</h2><p>定义：$f(x)$ 是关于 $x$ 的函数，当 $x$ 在变化的过程中 $f(x)$ 趋近于某一定值 $\alpha$，则称 $\alpha$ 是这一过程中的极限（limit）。
           <div class="read-more">
-            <a href="/2023/01/15/Week-2/" class="read-more-link">Read more..</a>
+            <a href="/2023/03/01/%E9%AB%98%E6%95%B0%E4%B8%8A/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2023/01/08/Week-1/">Week 1</a>
+      <h1 class="post-title"><a class="post-link" href="/2023/02/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2023-01-08
+          2023-02-23
         </span><span class="post-category">
-            <a href="/categories/SMU-Winter-2023/">SMU Winter 2023</a>
+            <a href="/categories/%E5%AD%A6%E7%A7%91%E7%AC%94%E8%AE%B0/">学科笔记</a>
             </span>
         </div>
     </header>
 
-    <div class="post-content"><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>题单：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/contest/95102#problems">蓝桥杯模拟赛1</a> </p>
-<p>今天第一次参加比赛，虽然是很小的校内训练赛，而且可以查东西，但对从未参加过比赛的我而言也很有比赛的感觉。蓝桥杯 OI 赛制，提交后不能看到代码的通过情况，所以我在本地通过样例后再提交代码。我想起我的 luogu 做题数比队里的一些人多，但是排名却没有他们高，只有一个灰色的名字，应该是因为排名参考了提交次数和通过次数，我太不珍惜提交，总是错了再改，导致我的提交次数远大于我的通过次数。今天的蓝桥杯训练赛制甚至没有试错的机会，所以我总结了一些 tips：
+    <div class="post-content"><h1 id="1-矩阵及其初等变换"><a href="#1-矩阵及其初等变换" class="headerlink" title="1 矩阵及其初等变换"></a>1 矩阵及其初等变换</h1><h2 id="1-1-矩阵及其运算"><a href="#1-1-矩阵及其运算" class="headerlink" title="1.1 矩阵及其运算"></a>1.1 矩阵及其运算</h2><h3 id="1-1-1-矩阵的概念"><a href="#1-1-1-矩阵的概念" class="headerlink" title="1.1.1 矩阵的概念"></a>1.1.1 矩阵的概念</h3><p>定义：$m \times n$ 矩阵（matrix）是由 $m \times n$ 个数字构成的矩形数表。
           <div class="read-more">
-            <a href="/2023/01/08/Week-1/" class="read-more-link">Read more..</a>
+            <a href="/2023/02/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2022/12/30/%E5%89%8D%E8%A8%80/">前言</a>
+      <h1 class="post-title"><a class="post-link" href="/2023/02/19/%E5%86%AC%E8%AE%AD%E8%90%A5%E7%AC%AC%E5%85%AD%E5%91%A8/">冬训营第六周</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2022-12-30
+          2023-02-19
         </span><span class="post-category">
-            <a href="/categories/SMU-Winter-2023/">SMU Winter 2023</a>
+            <a href="/categories/SMU-%E5%86%AC%E8%AE%AD%E8%90%A5-2023/">SMU 冬训营 2023</a>
             </span>
         </div>
     </header>
 
-    <div class="post-content"><h1 id="缘起：为什么参加寒假算法训练营？"><a href="#缘起：为什么参加寒假算法训练营？" class="headerlink" title="缘起：为什么参加寒假算法训练营？"></a>缘起：为什么参加寒假算法训练营？</h1><p>说实话，这是一连串巧合的结果。之前学校要举办一个编程比赛，我抱着试一试不亏的态度报了名。结果比赛因为疫情原因推迟到了下个学期，热心的学长们进而提出搞一个“寒假算法训练营”来培养一下我们这些学弟学妹。我想着，寒假与其在家里荒废，不如学点算法，还有个营。我不是一个自律的人，变相地整点他律挺好的。如今事到临头，才感觉到可能会压力不小。
+    <div class="post-content"><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>题单：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/contest/101095#problems">蓝桥杯模拟赛 4</a> </p>
+<p>没太多想思考的题。有些题做不出来，却也因为无聊而不想多思考。
           <div class="read-more">
-            <a href="/2022/12/30/%E5%89%8D%E8%A8%80/" class="read-more-link">Read more..</a>
+            <a href="/2023/02/19/%E5%86%AC%E8%AE%AD%E8%90%A5%E7%AC%AC%E5%85%AD%E5%91%A8/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
-      <nav class="pagination"></nav></section></div></div>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2023/02/06/%E5%86%AC%E8%AE%AD%E8%90%A5%E7%AC%AC%E4%BA%94%E5%91%A8/">冬训营第五周</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-02-06
+        </span><span class="post-category">
+            <a href="/categories/SMU-%E5%86%AC%E8%AE%AD%E8%90%A5-2023/">SMU 冬训营 2023</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>题单：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/contest/100614#problems">蓝桥杯模拟赛 3</a> </p>
+<p>无论题目如何，一定要专注地思考下去，不要划水，不要摆烂。所有的思考都不会白费，正是这些思考让学习算法得以锻炼思维，而不是仅仅记住一个又一个的模板。</p>
+<blockquote>
+<p>在你意识到问题的本质之前，所有尝试都是必要的，没有哪条弯路是白走的。</p>
+</blockquote>
+          <div class="read-more">
+            <a href="/2023/02/06/%E5%86%AC%E8%AE%AD%E8%90%A5%E7%AC%AC%E4%BA%94%E5%91%A8/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <nav class="pagination"><a class="next" href="/page/2/">
+        <span class="next-text">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></section></div></div>
       </main>
 
       <footer id="footer" class="footer"><div class="social-links"><a href="mailto:3521897773@qq.com" class="iconfont icon-email" title="email"></a>
