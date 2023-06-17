@@ -5,7 +5,7 @@ tags: C++
 categories: Default
 ---
 
-Sometimes we need to provide or use a third-party C/C++ dynamic-link libraries. This blog aims to teach how to build, install and use a C/C++ dynamic-link library.
+Sometimes we need to provide or use a third-party C/C++ dynamic-link libraries. This blog aims to teach how to build, install and use a C/C++ dynamic-link library.<!--more-->
 
 # Build and use manually
 
