@@ -55,7 +55,7 @@ g++ hello.o -shared -o libhello.so
 ```
 
 * **-shared**: to create a shared library;
-* **-o libhello.so**: to name the output file as **libhello.so**.
+* **-o libxxx.so**: to name the output file as **libxxx.so**.
 
 ## Use the shared library
 
@@ -151,7 +151,7 @@ Dynamic-link library construction:
 
 **hello.h** and **hello.cc** are as same as above, and **test.cc** is similar to **main.cc**.
 
-The differences between building manually and building with CMake is that we can write a **CMakeLists.txt** rather than run command line by line. Of course, we should install **Cmake** and **GNU make** before we use it.
+The differences between building manually and building with CMake is that we just need to write a **CMakeLists.txt** rather than run command line by line. Of course, we should install **Cmake** and **GNU make** before we use it.
 
 Let's take a consideration about what we need do to build and use a dynamic-link library:
 
