@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Build a C/C++ dynamic-link library"/><meta name="keywords" content="C++, The Spica" /><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
+<link rel="canonical" href="http://thespica.top/2023/06/16/Make-and-install-a-C-C-dynamic-link-library/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>Build a C/C++ dynamic-link library - The Spica</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">The Spica</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">The Spica</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Build a C/C++ dynamic-link library
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-06-16
+        </span><span class="post-category">
+            <a href="/categories/Default/">Default</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Build-and-use-manually"><span class="toc-text">Build and use manually</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Compile-source-code-to-object-o-file"><span class="toc-text">Compile source code to object(.o) file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Link-object-file-to-library-libxxx-so-file"><span class="toc-text">Link object file to library(libxxx.so) file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-the-shared-library"><span class="toc-text">Use the shared library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-header-file"><span class="toc-text">Install header file</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Build-and-use-with-CMake"><span class="toc-text">Build and use with CMake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-source-code-for-shared-library"><span class="toc-text">Build source code for shared library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-installed-library-in-new-project"><span class="toc-text">Use installed library in new project</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>Sometimes we need to provide or use a third-party C&#x2F;C++ dynamic-link libraries. This blog aims to teach how to build, install and use a C&#x2F;C++ dynamic-link library.<span id="more"></span></p>
+<h1 id="Build-and-use-manually"><a href="#Build-and-use-manually" class="headerlink" title="Build and use manually"></a>Build and use manually</h1><p>First, this is our construction:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── hello.cc</span><br><span class="line">├── hello.h</span><br><span class="line">└── main.cc</span><br></pre></td></tr></table></figure>
+
+<p>Now we have a source file called <strong>hello.cc</strong> and a head file called <strong>hello.h</strong>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.cc</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello form dynamic-link libaray!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> HELLO_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HELLO_H</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">hello</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Compile-source-code-to-object-o-file"><a href="#Compile-source-code-to-object-o-file" class="headerlink" title="Compile source code to object(.o) file"></a>Compile source code to object(.o) file</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ hello.cc -c -fPIC</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>-c</strong>: only compile the source code and not link it with other files;</li>
+<li><strong>-fPIC</strong>: the flag tells the complier to generate PIC(position-independent code), this is common in building dynamic library.</li>
+</ul>
+<h2 id="Link-object-file-to-library-libxxx-so-file"><a href="#Link-object-file-to-library-libxxx-so-file" class="headerlink" title="Link object file to library(libxxx.so) file"></a>Link object file to library(libxxx.so) file</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ hello.o -shared -o libhello.so</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>-shared</strong>: to create a shared library;</li>
+<li><strong>-o libxxx.so</strong>: to name the output file as <strong>libxxx.so</strong>.</li>
+</ul>
+<h2 id="Use-the-shared-library"><a href="#Use-the-shared-library" class="headerlink" title="Use the shared library"></a>Use the shared library</h2><p>There is a source code called <code>main.cc</code> use this shared library:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#inlcude <span class="string">&quot;hello.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">hello</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now we can compile and link it to <strong>libhello.so</strong>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cc -o main.out -L . -l hello</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>-L</strong>: tells the linker to look for library files in which directory, now it is current directory.</li>
+<li><strong>-l xxx</strong>: tells the linker to link with the library file <strong>libxxx.so</strong>.</li>
+</ul>
+<p>After we run command above, we can get a executable file called <strong>main.out</strong>, so we can execute it:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./main.out</span><br></pre></td></tr></table></figure>
+
+<p>If met error that can’t load shared library like this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./main.out: error while loading shared libraries: libhello.so: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>It’s related with default <strong>LD_LIBRARY_PATH</strong>, export it as current directory:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=`pwd`</span><br></pre></td></tr></table></figure>
+
+<p>Then we can get the sequence as we hope:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello form dynamic-link libaray!</span><br></pre></td></tr></table></figure>
+
+<h2 id="Install-header-file"><a href="#Install-header-file" class="headerlink" title="Install header file"></a>Install header file</h2><p>There is a new problem: if we use this shared library in other directories, source code can’t find needed head file like:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main.cc:1:10: fatal error: hello.h: No such file or directory</span><br><span class="line">    1 | #include &quot;hello.h&quot;</span><br><span class="line">      |          ^~~~~~~~~</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></table></figure>
+
+<p>In order to make it convenient to include header file, we need to copy our head file to default search path, such as <code>usr/local/include</code> or <code>usr/include</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ~/shared-lib-demo/hello.h /usr/local/include</span><br></pre></td></tr></table></figure>
+
+<p>and run:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cc -o main.out -L ../shared-lib-demo/ -l hello</span><br></pre></td></tr></table></figure>
+
+<p>Similar as we copy header file to default header file search path, we can also copy <strong>libhello.so</strong> to default library search path or add a link which point to <strong>libxxx.so</strong> in <strong>LD_LIBRARY_PATH</strong>, so that we don’t need to use <code>-L ../shared-lib-demo/</code>.</p>
+<p>Then we can get what we want:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./main</span><br><span class="line">Hello form dynamic-link libaray!</span><br></pre></td></tr></table></figure>
+
+<h1 id="Build-and-use-with-CMake"><a href="#Build-and-use-with-CMake" class="headerlink" title="Build and use with CMake"></a>Build and use with CMake</h1><p>Dynamic-link library construction:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">├── include</span><br><span class="line">│   └── hello.h</span><br><span class="line">├── src</span><br><span class="line">│   └── hello.cc</span><br><span class="line">└── test.cc</span><br></pre></td></tr></table></figure>
+
+<p><strong>hello.h</strong> and <strong>hello.cc</strong> are as same as above, and <strong>test.cc</strong> is similar to <strong>main.cc</strong>.</p>
+<p>The differences between building manually and building with CMake is that we just need to write a <strong>CMakeLists.txt</strong> rather than run command line by line. Of course, we should install <strong>Cmake</strong> and <strong>GNU make</strong> before we use it.</p>
+<p>Let’s take a consideration about what we need do to build and use a dynamic-link library:</p>
+<ul>
+<li>Adding source code to shared library;</li>
+<li>Including header directories when write code that use the library;</li>
+<li>Linking new project with our library.</li>
+</ul>
+<h2 id="Build-source-code-for-shared-library"><a href="#Build-source-code-for-shared-library" class="headerlink" title="Build source code for shared library"></a>Build source code for shared library</h2><p>In order to link it conveniently, we can install our library so that we can use it directly.</p>
+<p>So the <strong>CMakeLists.txt</strong> looks like:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set version requirement and project name</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.16</span>)</span><br><span class="line"><span class="keyword">project</span>(hello_lib)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set CXX standard</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a library called hello_lib, SHARED means dynamic-link library</span></span><br><span class="line"><span class="keyword">add_library</span>(hello_lib SHARED src/hello.cc)</span><br><span class="line"><span class="comment"># let new project who use this library can find header needed</span></span><br><span class="line"><span class="keyword">target_link_directories</span>(hello_lib PUBLIC <span class="keyword">include</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add executalble file and link it with library</span></span><br><span class="line"><span class="keyword">add_executable</span>(<span class="keyword">test</span>.out <span class="keyword">test</span>.cc)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="keyword">test</span>.out hello_lib)</span><br><span class="line"></span><br><span class="line"><span class="comment"># install the library target and the header files</span></span><br><span class="line"><span class="keyword">install</span>(TARGETS hello_lib LIBRARY DESTINATION lib)</span><br><span class="line"><span class="keyword">install</span>(FILES <span class="keyword">include</span>/hello.h DESTINATION <span class="keyword">include</span>)</span><br></pre></td></tr></table></figure>
+
+<p>For test it, we can make a directory called build and <code>cd build</code>, run:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake ..    # out source compile</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>Then you well get a executable called <strong>test.out</strong> which can let you run and test it.</p>
+<p>To install, just run <code>make install</code> after run <code>make</code>.</p>
+<h2 id="Use-installed-library-in-new-project"><a href="#Use-installed-library-in-new-project" class="headerlink" title="Use installed library in new project"></a>Use installed library in new project</h2><p>New project directory:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">└── main.cc</span><br></pre></td></tr></table></figure>
+
+<p><strong>main.cc</strong>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;hello.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">hello</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>It’s no doubt that we need tell the new project that it should depend the shard library, so write it in cmake:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.16</span>)</span><br><span class="line"><span class="keyword">project</span>(cmake_dynamic_lib_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main.out main.cc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># find installed lib, link it to executalble file</span></span><br><span class="line"><span class="keyword">find_library</span>(HELLO_LIB hello_lib)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(main.out <span class="variable">$&#123;HELLO_LIB&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Run</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>You can get <strong>main.out</strong> as we expect.</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://thespica.top">John</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://thespica.top/2023/06/16/Make-and-install-a-C-C-dynamic-link-library/">http://thespica.top/2023/06/16/Make-and-install-a-C-C-dynamic-link-library/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议 (CC BY-NC 4.0)</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/C/">C++</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2023/06/29/%E9%AB%98%E6%95%B0%E4%B8%8B/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">高数下</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2023/04/20/%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%8B%B7%E8%B4%9D/">
+        <span class="next-text nav-default">对象的拷贝</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:3521897773@qq.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2023<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">John</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
+</body>
+</html>
