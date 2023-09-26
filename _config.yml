@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://thespica.top
+url: http://thespica.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -104,4 +104,4 @@ theme: even
 deploy:
   type: git
   repo: https://github.com/Thespica/Thespica.github.io.git
-  branch: main
+  branch: gh-pages
