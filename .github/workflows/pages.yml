@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v2
-       with:
+        with:
           submodules: true
 
       - name: Use Node.js 18.x
@@ -27,12 +27,6 @@ jobs:
           key: ${{ runner.OS }}-npm-cache
           restore-keys: |
             ${{ runner.OS }}-npm-cache
-
-      - name: Install plugins for theme Even
-        run: |
-        npm install hexo-renderer-scss hexo-renderer-swig --save
-        npm uninstall hexo-renderer-sass
-        npm i --save hexo-renderer-sass-next
 
       - name: Install Dependencies
         run: npm install
