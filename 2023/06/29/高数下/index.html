@@ -139,7 +139,10 @@
 <h2 id="曲线切向量"><a href="#曲线切向量" class="headerlink" title="曲线切向量"></a>曲线切向量</h2><p>设曲线<br>$$<br>\begin{cases}<br>x&#x3D;\phi(t) \newline<br>y&#x3D;\psi(t) \newline<br>z&#x3D;\omega(t)<br>\end{cases}<br>$$</p>
 <p>则在点 $(x_0,y_0,z_0)$ 处的一个切向量为<br>$$<br>(\phi’(t)x_0,\psi’(t)y_0,\omega’(t)z_0)<br>$$</p>
 <h2 id="曲面法向量"><a href="#曲面法向量" class="headerlink" title="曲面法向量"></a>曲面法向量</h2><p>设平面<br>$$<br>F(x,y,z)&#x3D;0<br>$$<br>则在点 $(x_0,y_0,z_0)$ 处的一个法向量为<br>$$<br>(F_x’x_0,F_y’y_0,F_z’z_0)<br>$$</p>
-<h1 id="偏导"><a href="#偏导" class="headerlink" title="偏导"></a>偏导</h1><h2 id="多元函数连续、可导、可微的关系"><a href="#多元函数连续、可导、可微的关系" class="headerlink" title="多元函数连续、可导、可微的关系"></a>多元函数连续、可导、可微的关系</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    偏导数连续--&gt;函数可微</span><br><span class="line">    函数可微--&gt;函数连续</span><br><span class="line">    函数可微--&gt;函数可导</span><br></pre></td></tr></table></figure>
+<h1 id="偏导"><a href="#偏导" class="headerlink" title="偏导"></a>偏导</h1><h2 id="多元函数连续、可导、可微的关系"><a href="#多元函数连续、可导、可微的关系" class="headerlink" title="多元函数连续、可导、可微的关系"></a>多元函数连续、可导、可微的关系</h2><pre class="mermaid">graph TB
+    偏导数连续-->函数可微
+    函数可微-->函数连续
+    函数可微-->函数可导</pre>
 
 <h2 id="偏导数的计算"><a href="#偏导数的计算" class="headerlink" title="偏导数的计算"></a>偏导数的计算</h2><p>一般求法：求函数对某一个自变量的偏导数时，把其他自变量当作常量对该自变量求导。</p>
 <h3 id="二阶导"><a href="#二阶导" class="headerlink" title="二阶导"></a>二阶导</h3><p>顾名思义，求偏导后再求偏导，求两次。</p>
