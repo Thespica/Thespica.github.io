@@ -11,6 +11,7 @@ npm install hexo-cli -g
 npm install hexo-renderer-scss hexo-renderer-swig --save
 npm uninstall hexo-renderer-sass
 npm i --save hexo-renderer-sass-next
+npm i --save hexo-filter-mermaid-diagrams
 ```
 
 将仓库克隆到本地
@@ -25,4 +26,4 @@ hexo s
 
 ## 部署到网站
 
-所有生成和部署的工作都是由 GitHub Action 完成的，因此只需要克隆项目本体，修改内容，推送到远端仓库就 ok 了。不需要配置环境，也不需要安装主题。
+所有生成和部署的工作都是由 GitHub Action 完成的，因此只需要克隆项目本体，修改内容，推送到远端仓库就 ok 了。既不需要配置环境，也不需要安装主题、插件等。
