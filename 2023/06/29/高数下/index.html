@@ -13,14 +13,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="高数下"/><meta name="keywords" content="高数, The Spica" /><link rel="alternate" href="/atom.xml" title="The Spica" type="application/atom+xml">
+<meta name="description" content="高数下"/><meta name="keywords" content="高数, The Spica" /><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
 <link rel="canonical" href="http://thespica.github.io/2023/06/29/高数下/"/>
 
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=" />
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
 
 <script>
-  window.config = {"leancloud":"","toc":"","fancybox":"","pjax":"","latex":""};
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
 </script>
 
     <title>高数下 - The Spica</title>
@@ -38,14 +41,54 @@
 </div>
 
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"></ul>
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
 </nav>
 <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
   <a href="/." class="logo">The Spica</a>
 </div>
 
-<nav class="site-navbar"></nav>
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
 </header>
 
       <main id="main" class="main">
@@ -64,7 +107,12 @@
         </div>
     </header>
 
-    <div class="post-content"><h1 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h1><p>要求出一个微分方程的解，即求一个使得方程成立的 $y&#x3D;f(x, y)$ 表达式<span id="more"></span></p>
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%98%B6%E7%BA%BF%E6%80%A7%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">一阶线性微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BD%90%E6%AC%A1%E7%9A%84%E4%B8%80%E9%98%B6%E7%BA%BF%E6%80%A7%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">齐次的一阶线性微分方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%BD%90%E6%AC%A1%E7%9A%84%E4%B8%80%E9%98%B6%E7%BA%BF%E6%80%A7%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">非齐次的一阶线性微分方程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%99%8D%E9%98%B6%E7%9A%84%E4%BA%8C%E9%98%B6%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">可降阶的二阶微分方程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%B3%BB%E6%95%B0%E7%BA%BF%E6%80%A7%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="toc-text">常系数线性微分方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BD%90%E6%AC%A1"><span class="toc-text">齐次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%BD%90%E6%AC%A1"><span class="toc-text">非齐次</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%91%E9%87%8F"><span class="toc-text">向量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E4%B9%98%EF%BC%88%E6%95%B0%E9%87%8F%E7%A7%AF%EF%BC%89"><span class="toc-text">点乘（数量积）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%89%E4%B9%98%EF%BC%88%E5%90%91%E9%87%8F%E7%A7%AF%EF%BC%89"><span class="toc-text">叉乘（向量积）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E7%A7%AF"><span class="toc-text">混合积</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%B9%B3%E9%9D%A2"><span class="toc-text">直线和平面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E7%BA%BF%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">直线的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E9%9D%A2%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">平面的表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%88%B0%E7%BA%BF%E9%9D%A2%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="toc-text">点到线面的距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B2%E7%BA%BF%E5%88%87%E5%90%91%E9%87%8F"><span class="toc-text">曲线切向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B2%E9%9D%A2%E6%B3%95%E5%90%91%E9%87%8F"><span class="toc-text">曲面法向量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%81%8F%E5%AF%BC"><span class="toc-text">偏导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E8%BF%9E%E7%BB%AD%E3%80%81%E5%8F%AF%E5%AF%BC%E3%80%81%E5%8F%AF%E5%BE%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">多元函数连续、可导、可微的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E5%AF%BC%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-text">偏导数的计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E5%AF%BC"><span class="toc-text">二阶导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC"><span class="toc-text">多元复合函数求导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC"><span class="toc-text">隐函数求导</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E5%BE%AE%E5%88%86"><span class="toc-text">全微分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E6%9E%81%E5%80%BC"><span class="toc-text">多元函数极值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A7%E6%95%B0"><span class="toc-text">级数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%BA%A7%E6%95%B0"><span class="toc-text">特殊级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E9%A1%B9%E7%BA%A7%E6%95%B0%E7%9A%84%E6%95%9B%E6%95%A3%E6%80%A7"><span class="toc-text">正项级数的敛散性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%AE%A1%E6%95%9B%E6%B3%95"><span class="toc-text">比较审敛法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E5%80%BC%E5%AE%A1%E6%95%9B%E6%B3%95"><span class="toc-text">比值审敛法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E5%80%BC%E5%AE%A1%E6%95%9B%E6%B3%95"><span class="toc-text">根值审敛法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E7%BA%A7%E6%95%B0"><span class="toc-text">幂级数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86"><span class="toc-text">二重积分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%AD%A5%E9%AA%A4"><span class="toc-text">计算步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%AF%B9%E7%A7%B0%E6%80%A7%E8%AE%A1%E7%AE%97"><span class="toc-text">利用对称性计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86"><span class="toc-text">曲线积分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86"><span class="toc-text">第一类曲线积分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86"><span class="toc-text">第二类曲线积分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F"><span class="toc-text">格林公式</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h1><p>要求出一个微分方程的解，即求一个使得方程成立的 $y&#x3D;f(x, y)$ 表达式<span id="more"></span></p>
 <h2 id="一阶线性微分方程"><a href="#一阶线性微分方程" class="headerlink" title="一阶线性微分方程"></a>一阶线性微分方程</h2><p>一阶，指的是方程中关于 $y$ 的导数是一阶导数；线性，指的是方程简化后的每一项关于 $y$、$y’$ 的次数为 0 或 1</p>
 <p>一阶微分方程的标准形式<br>$$<br>\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y&#x3D;Q(x)<br>$$</p>
 <h3 id="齐次的一阶线性微分方程"><a href="#齐次的一阶线性微分方程" class="headerlink" title="齐次的一阶线性微分方程"></a>齐次的一阶线性微分方程</h3><p>可分离变量的微分方程：如果可以化为这种形式，直接对方程两侧积分<br>$$<br>p(y)\mathrm{d}y&#x3D;q(x)\mathrm{d}x<br>$$<br>相似的，如果 $\frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(x,y)$ 中的 $f(x, y)$ 可以表示为 $\phi(\frac{y}{x})$ 的函数，令 $u&#x3D;\frac{y}{x}$，把方程用 $u$ 和 $x$ 表示，求解回代即可。</p>
@@ -129,7 +177,19 @@
 <p>逆时针<br>$$<br>\int_LP(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;\iint_D(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\mathrm{d}x\mathrm{d}y<br>$$<br>顺时针<br>$$<br>\int_LP(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;-\iint_D(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\mathrm{d}x\mathrm{d}y<br>$$<br>这里 $D$ 是 $L$ 围成的面积。</p>
 
       </div>
-      
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://thespica.github.io">John</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://thespica.github.io/2023/06/29/%E9%AB%98%E6%95%B0%E4%B8%8B/">http://thespica.github.io/2023/06/29/%E9%AB%98%E6%95%B0%E4%B8%8B/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议 (CC BY-NC 4.0)</a>
+    </p>
+  </div>
       <footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E9%AB%98%E6%95%B0/">高数</a>
@@ -145,7 +205,17 @@
       </main>
 
       <footer id="footer" class="footer">
-<div class="copyright">
+  <script src='https://unpkg.com/mermaid@9.3.0/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+<div class="social-links"><a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
   <span class="power-by">
     Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
   </span>
@@ -168,6 +238,7 @@
       </div>
     </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v="></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
 </body>
 </html>

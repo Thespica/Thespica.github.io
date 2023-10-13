@@ -13,14 +13,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="线性代数"/><meta name="keywords" content="线性代数, The Spica" /><link rel="alternate" href="/atom.xml" title="The Spica" type="application/atom+xml">
+<meta name="description" content="线性代数"/><meta name="keywords" content="线性代数, The Spica" /><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
 <link rel="canonical" href="http://thespica.github.io/2023/02/23/线性代数/"/>
 
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=" />
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
 
 <script>
-  window.config = {"leancloud":"","toc":"","fancybox":"","pjax":"","latex":""};
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
 </script>
 
     <title>线性代数 - The Spica</title>
@@ -38,14 +41,54 @@
 </div>
 
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"></ul>
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
 </nav>
 <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
   <a href="/." class="logo">The Spica</a>
 </div>
 
-<nav class="site-navbar"></nav>
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
 </header>
 
       <main id="main" class="main">
@@ -64,7 +107,12 @@
         </div>
     </header>
 
-    <div class="post-content"><h1 id="1-矩阵及其初等变换"><a href="#1-矩阵及其初等变换" class="headerlink" title="1 矩阵及其初等变换"></a>1 矩阵及其初等变换</h1><h2 id="1-1-矩阵及其运算"><a href="#1-1-矩阵及其运算" class="headerlink" title="1.1 矩阵及其运算"></a>1.1 矩阵及其运算</h2><h3 id="1-1-1-矩阵的概念"><a href="#1-1-1-矩阵的概念" class="headerlink" title="1.1.1 矩阵的概念"></a>1.1.1 矩阵的概念</h3><p>定义：$m \times n$ 矩阵（matrix）是由 $m \times n$ 个数字构成的矩形数表。<span id="more"></span></p>
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2"><span class="toc-text">1 矩阵及其初等变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E7%9F%A9%E9%98%B5%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97"><span class="toc-text">1.1 矩阵及其运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1.1 矩阵的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E7%9F%A9%E9%98%B5%E7%9A%84%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97"><span class="toc-text">1.1.2 矩阵的线性运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E7%9F%A9%E9%98%B5%E7%9A%84%E4%B9%98%E6%B3%95"><span class="toc-text">1.1.3 矩阵的乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BD%AC%E7%BD%AE%E8%BF%90%E7%AE%97"><span class="toc-text">1.1.4 矩阵的转置运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2"><span class="toc-text">1.2 高斯消元法与矩阵的初等变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E6%B3%95"><span class="toc-text">1.2.1 高斯消元法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E7%9F%A9%E9%98%B5%E7%9A%84%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2"><span class="toc-text">1.2.2 矩阵的初等变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-%E5%88%9D%E7%AD%89%E7%9F%A9%E9%98%B5"><span class="toc-text">1.2.3 初等矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%80%86%E7%9F%A9%E9%98%B5"><span class="toc-text">1.3 逆矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E9%80%86%E7%9F%A9%E9%98%B5%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%80%A7%E8%B4%A8"><span class="toc-text">1.3.1 逆矩阵的概念与性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E7%94%A8%E5%88%9D%E7%AD%89%E5%8F%98%E6%8D%A2%E6%B1%82%E9%80%86%E7%9F%A9%E9%98%B5"><span class="toc-text">1.3.2 用初等变换求逆矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E5%88%86%E5%9D%97%E7%9F%A9%E9%98%B5"><span class="toc-text">1.4 分块矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E7%9F%A9%E9%98%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E5%88%9D%E6%AD%A5"><span class="toc-text">1.5 矩阵和线性映射初步</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="toc-text">2 行列式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E8%AE%A1%E7%AE%97%E5%8F%8A%E5%85%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">2.1 行列式的计算及其变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E4%BA%8C%E9%98%B6%E5%92%8C%E4%B8%89%E9%98%B6%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E5%AF%B9%E8%A7%92%E7%BA%BF%E6%B3%95%E5%88%99"><span class="toc-text">2.1.1 二阶和三阶行列式的对角线法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E4%B8%80%E8%88%AC%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-text">2.1.2 一般行列式的计算方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E5%88%9D%E7%AD%89%E8%A1%8C%EF%BC%88%E5%88%97%EF%BC%89%E5%8F%98%E6%8D%A2"><span class="toc-text">2.1.3 行列式的初等行（列）变换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E9%99%8D%E9%98%B6%E5%8F%8A%E5%B1%95%E5%BC%80"><span class="toc-text">2.2 行列式的降阶及展开</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E9%99%8D%E9%98%B6%E8%BF%90%E7%AE%97"><span class="toc-text">2.2.1 行列式的降阶运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E8%A1%8C%E5%88%97%E5%BC%8F%E6%8C%89%E8%A1%8C%EF%BC%88%E5%88%97%EF%BC%89%E5%B1%95%E5%BC%80%E4%BB%A5%E5%8F%8A%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E9%80%92%E6%8E%A8%E5%AE%9A%E4%B9%89"><span class="toc-text">2.2.2 行列式按行（列）展开以及行列式的递推定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%AE%9A%E7%90%86"><span class="toc-text">2.2.3 拉普拉斯定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%AD%89%E4%BA%8E-0-%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="toc-text">2.3 行列式等于 0 的含义以及矩阵的秩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E8%A1%8C%E5%88%97%E5%BC%8F%E7%AD%89%E4%BA%8E-0-%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-text">2.3.1 行列式等于 0 的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="toc-text">2.3.2 矩阵的秩</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-n-%E7%BB%B4%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="toc-text">3 $n$ 维向量空间</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-n-%E7%BB%B4%E7%A9%BA%E9%97%B4%E5%90%91%E9%87%8F%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-text">3.1 $n$ 维空间向量基本定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%90%91%E9%87%8F%E7%BB%84%E7%9A%84%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3%E6%80%A7"><span class="toc-text">3.2 向量组的线性相关性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E4%B8%8E%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3"><span class="toc-text">3.2.1 线性无关与线性相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E5%90%91%E9%87%8F%E7%BB%84%E5%8F%8A%E5%85%B6%E6%9E%84%E6%88%90%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="toc-text">3.2.2 向量组及其构成矩阵的秩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E8%A7%A3%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">3.3 线性方程组解的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E9%BD%90%E6%AC%A1%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-text">3.3.1 齐次线性方程组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E9%9D%9E%E9%BD%90%E6%AC%A1%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-text">3.3.2 非齐次线性方程组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%90%91%E9%87%8F%E7%BB%84%E7%9A%84%E6%9E%81%E5%A4%A7%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E7%BB%84"><span class="toc-text">3.4 向量组的极大线性无关组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E6%9E%81%E5%A4%A7%E7%BA%BF%E6%80%A7%E6%97%A0%E5%85%B3%E7%BB%84%E4%B8%8E%E5%90%91%E9%87%8F%E7%9A%84%E7%A7%A9"><span class="toc-text">3.4.1 极大线性无关组与向量的秩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-%E7%AD%89%E4%BB%B7%E5%90%91%E9%87%8F%E7%BB%84"><span class="toc-text">3.4.2 等价向量组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="toc-text">3.5 线性空间基变换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-text">4 特征值与特征向量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%8D%95%E4%BD%8D%E6%AD%A3%E4%BA%A4%E5%9F%BA%E5%90%91%E9%87%8F"><span class="toc-text">4.1 单位正交基向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-%E5%90%91%E9%87%8F%E7%9A%84%E5%86%85%E7%A7%AF"><span class="toc-text">4.1.1 向量的内积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-%E5%8D%95%E4%BD%8D%E6%AD%A3%E4%BA%A4%E5%9F%BA%E5%90%91%E9%87%8F%E4%B8%8E%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5"><span class="toc-text">4.1.2 单位正交基向量与正交矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-%E6%96%BD%E5%AF%86%E7%89%B9%E6%AD%A3%E4%BA%A4%E5%8C%96"><span class="toc-text">4.1.3 施密特正交化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-text">4.2 特征值与特征向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">4.2.1 特征值与特征向量的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-text">4.2.2 特征值与特征向量的计算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E7%9B%B8%E4%BC%BC%E7%9F%A9%E9%98%B5%E4%BB%A5%E5%8F%8A%E7%9F%A9%E9%98%B5%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%AF%B9%E8%A7%92%E5%8C%96"><span class="toc-text">4.3 相似矩阵以及矩阵的相似对角化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-%E7%9B%B8%E4%BC%BC%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8F%8A%E5%85%B6%E9%83%A8%E5%88%86%E6%80%A7%E8%B4%A8"><span class="toc-text">4.3.1 相似矩阵的本质及其部分性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%BC%BC%E5%AF%B9%E8%A7%92%E5%8C%96"><span class="toc-text">4.3.2 矩阵相似对角化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-%E5%AE%9E%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%AF%B9%E8%A7%92%E5%8C%96"><span class="toc-text">4.3.3 实对称矩阵的相似对角化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="toc-text">5 二次型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E4%BA%8C%E6%AC%A1%E5%9E%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">5.1 二次型的概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-text">6 线性空间与线性变换</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="1-矩阵及其初等变换"><a href="#1-矩阵及其初等变换" class="headerlink" title="1 矩阵及其初等变换"></a>1 矩阵及其初等变换</h1><h2 id="1-1-矩阵及其运算"><a href="#1-1-矩阵及其运算" class="headerlink" title="1.1 矩阵及其运算"></a>1.1 矩阵及其运算</h2><h3 id="1-1-1-矩阵的概念"><a href="#1-1-1-矩阵的概念" class="headerlink" title="1.1.1 矩阵的概念"></a>1.1.1 矩阵的概念</h3><p>定义：$m \times n$ 矩阵（matrix）是由 $m \times n$ 个数字构成的矩形数表。<span id="more"></span></p>
 <p>为了更方便地求解线性方程组，考虑将其结构化：把所有未知数按顺序排列，将对应未知数的系数抽离到特定的位置（缺少某一未知数时系数为 0），形成一个系数矩阵 $A$；如果需要加入常数，则在系数矩阵的右侧补出一列向量 $b$，并在两者之间划出一条虚线以示区分，形成增广矩阵（enrichment matrix），表示为 $(A|b)$ 或 $(A,b)$。</p>
 <h3 id="1-1-2-矩阵的线性运算"><a href="#1-1-2-矩阵的线性运算" class="headerlink" title="1.1.2 矩阵的线性运算"></a>1.1.2 矩阵的线性运算</h3><p>矩阵的加减法只能作用于相同尺寸的矩阵。</p>
 <p>两矩阵相加（减），相同位置的元素相加（减）即可。</p>
@@ -311,7 +359,19 @@
 <p>合同矩阵与相似矩阵很像，矩阵的相似对角化可以简化计算，那么合同矩阵的对角化呢？</p>
 <h1 id="6-线性空间与线性变换"><a href="#6-线性空间与线性变换" class="headerlink" title="6 线性空间与线性变换"></a>6 线性空间与线性变换</h1>
       </div>
-      
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://thespica.github.io">John</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://thespica.github.io/2023/02/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">http://thespica.github.io/2023/02/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议 (CC BY-NC 4.0)</a>
+    </p>
+  </div>
       <footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
@@ -332,7 +392,17 @@
       </main>
 
       <footer id="footer" class="footer">
-<div class="copyright">
+  <script src='https://unpkg.com/mermaid@9.3.0/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+<div class="social-links"><a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
   <span class="power-by">
     Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
   </span>
@@ -355,6 +425,7 @@
       </div>
     </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v="></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
 </body>
 </html>
