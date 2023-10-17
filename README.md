@@ -7,20 +7,14 @@
 安装 hexo 并安装插件：
 
 ```bash
-npm install hexo-cli -g
-npm install hexo-renderer-scss hexo-renderer-swig --save
-npm uninstall hexo-renderer-sass
-npm i --save hexo-renderer-sass-next
-npm i --save hexo-filter-mermaid-diagrams
+npm install
 ```
 
 将仓库克隆到本地
 
 ```bash
 git clone https://github.com/Thespica/Thespica.github.io blog-thespica
-cd blog-thespica
-git submodule update --init
-hexo clean & hexo g
+hexo clean
 hexo s
 ```
 

@@ -2,7 +2,7 @@
 title: Build a C/C++ dynamic-link library
 date: 2023-06-16 14:11:51
 tags: C++
-categories: Default
+categories: 
 ---
 
 Sometimes we need to provide or use a third-party C/C++ dynamic-link libraries. This blog aims to teach how to build, install and use a C/C++ dynamic-link library.<!--more-->

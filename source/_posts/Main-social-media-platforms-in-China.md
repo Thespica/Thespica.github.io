@@ -2,7 +2,7 @@
 title: Main social media platforms in China
 date: 2023-04-12 20:01:51
 tags: 
-categories: Default
+categories:
 ---
 
 China is the world’s largest social media market with highly engaged and mobile-savvy users. Its market composition varies considerably from the rest of the world. Due to the “Great Firewall” of China, as the Chinese government’s internet censorship project is commonly called, Facebook, Twitter, YouTube and other leading international social media players, are all blocked in the country.<!--more--> However, the Chinese social media market is not incomparable with its western counterparts. China’s mediascape in terms of social networking almost mirrors that of the rest of the world except that each of these sites is a domestically engineered platform.
