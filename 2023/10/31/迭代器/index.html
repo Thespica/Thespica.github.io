@@ -110,7 +110,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-vs-foreach"><span class="toc-text">for vs. foreach</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterable-vs-Iterator"><span class="toc-text">Iterable vs. Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Java 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Python 实现</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-vs-for-each"><span class="toc-text">for vs. for-each</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterable-vs-Iterator"><span class="toc-text">Iterable vs. Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Java 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Python 实现</span></a></li></ol>
     </div>
   </div><div class="post-content"><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>无需关注细节，即可按照特定顺序依次访问、修改一个集合中的各个元素（这里的修改不包含对集合结构的改动）。</p>
 <p>关键概念：</p>
@@ -121,15 +121,31 @@
 </ul>
 <span id="more"></span>
 
-<h2 id="for-vs-foreach"><a href="#for-vs-foreach" class="headerlink" title="for vs. foreach"></a>for vs. foreach</h2><p>传统的基于索引的 for 循环也对应有记录数据的集合，和用于记录状态的下标（指针），但有几个不同：</p>
-<ul>
-<li><p>for 循环的操作粒度更细，更灵活，相应也更繁琐。对于没有复杂需求的遍历，foreach 的读写都更清爽。</p>
-</li>
-<li><p>逻辑上，集合中的元素都可以按照线性的方式排列。但对于「从当前元素移动到下一个元素」的操作，不同的结构有不同的实现（例如数组是下标自增，而链表是指针指向自己的 <code>next</code>），调用者往往不关心这些繁琐的细节，却不得不手写这些细节，这增加了出错的风险。Iterator 通过重载 <code>next</code> 函数实现<strong>多态</strong>，<strong>封装</strong>了在不同结构的元素之间移动的细节。</p>
-</li>
-<li><p>每次取元素，for 循环需要依赖集合和下标（指针），而 foreach 循环中 Iterator 自己就能取得对应元素。</p>
-</li>
-</ul>
+<h2 id="for-vs-for-each"><a href="#for-vs-for-each" class="headerlink" title="for vs. for-each"></a>for vs. for-each</h2><p>传统的基于索引的 for 循环也对应有记录数据的集合，和用于记录状态的下标（指针），但有几个不同：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">for</th>
+<th align="center">for-each</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">粒度</td>
+<td align="center">灵活，繁琐</td>
+<td align="center">单一，便捷</td>
+</tr>
+<tr>
+<td align="center">移动</td>
+<td align="center"><code>idx++</code> 或 <code>ptr = ptr-&gt;next</code></td>
+<td align="center"><code>next()</code> 函数的副作用</td>
+</tr>
+<tr>
+<td align="center">取值</td>
+<td align="center"><code>arr[idx]</code> 或 <code>*ptr</code></td>
+<td align="center"><code>next()</code> 函数的返回值</td>
+</tr>
+</tbody></table>
 <h2 id="Iterable-vs-Iterator"><a href="#Iterable-vs-Iterator" class="headerlink" title="Iterable vs. Iterator"></a>Iterable vs. Iterator</h2><table>
 <thead>
 <tr>
@@ -138,12 +154,12 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">可以用 foreach 循环遍历的集合</td>
+<td align="center">可以用 for-each 循环遍历的集合</td>
 <td align="center">可以用于遍历一个集合的接口</td>
 </tr>
 <tr>
-<td align="center">需要实现 terator() 方法</td>
-<td align="center">需要实现 next() 和 hasNext() 方法</td>
+<td align="center">需要实现 <code>iterator()</code> 方法</td>
+<td align="center">需要实现 <code>next()</code> 和 <code>hasNext()</code> 方法</td>
 </tr>
 <tr>
 <td align="center">存储数据，不存储状态</td>
@@ -155,15 +171,15 @@
 </tr>
 </tbody></table>
 <h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><p>Element 元素类（可以是泛型）：自行实现，无特殊要求。</p>
-<p>Aggregate 集合类：继承 <code>java.lang.Iterable&lt;Element&gt;</code>，并实现其用于返回迭代器的 <code>iterator</code> 函数：</p>
+<p>Aggregate 集合类：继承 <code>java.lang.Iterable&lt;Element&gt;</code>，并实现其用于返回迭代器的 <code>iterator()</code> 函数：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Aggregate</span> <span class="keyword">implements</span> <span class="title class_">Iterable</span>&lt;Element&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;Element&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ElementIterator</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Iterator<Eliement> 迭代器类，有取得元素并使迭代器变为下一状态的 <code>next</code> 函数，和用于判断是否还有下一个元素的 <code>hasNext</code> 函数：</p>
+<p>Iterator<Eliement> 迭代器类，有取得元素并使迭代器变为下一状态的 <code>next</code> 函数，和用于判断是否还有下一个元素的 <code>hasNext()</code> 函数：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElementIterator</span> <span class="keyword">implements</span> <span class="title class_">Iterator</span>&lt;Element&gt; &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">current</span> <span class="operator">=</span> begin();</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> end();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Element <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getNextElement();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cursor != end;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Element <span class="title function_">getNextElement</span><span class="params">()</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Python-实现"><a href="#Python-实现" class="headerlink" title="Python 实现"></a>Python 实现</h2><p>Element 元素类：无特殊要求。</p>
 <p>Iterable 集合类：需要实现其用于返回迭代器的 <code>__iter()__</code> 函数。</p>
-<p>Iterator 迭代器类：有一个取得元素并使迭代器变为下一状态的 <code>__next__</code> 函数，没有下一个元素时，抛出 <code>StopIteration</code> 异常。一个集合和一个迭代器都可以完成遍历，即 Iterator 也可以是 Iterable，为了实现这符合直觉的一点，python 要求 Iterator 也拥有 <code>__iter()__</code> 函数，一般返回自己（虽然 CPython 自己并不遵守这一点）。</p>
+<p>Iterator 迭代器类：有一个取得元素并使迭代器变为下一状态的 <code>__next()__</code> 函数，没有下一个元素时，抛出 <code>StopIteration</code> 异常。一个集合和一个迭代器都包含足以完成遍历的信息，即 Iterator 也可以是 Iterable，为了实现这符合直觉的一点，python 要求 Iterator 也拥有 <code>__iter()__</code> 函数，一般返回自己（虽然 CPython 自己并不遵守这一点）。</p>
 <p>参考：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-iterator-vs-iterable">Differences Between Iterator and Iterable and How to Use Them? | Baeldung</a></li>
