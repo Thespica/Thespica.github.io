@@ -4,16 +4,17 @@
 
 依赖： [nodejs](https://nodejs.org/zh-cn/) 的环境
 
-安装 hexo 并安装插件：
+安装 hexo 以及有关依赖：
 
 ```bash
 npm install
 ```
 
-将仓库克隆到本地
+将仓库克隆到本地，并预览
 
 ```bash
 git clone https://github.com/Thespica/Thespica.github.io blog-thespica
+cd blog-thespica
 hexo clean
 hexo s
 ```
