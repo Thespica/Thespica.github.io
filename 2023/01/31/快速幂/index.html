@@ -107,7 +107,7 @@
         </div>
     </header>
 
-    <div class="post-content"><p><img src="G:\files\blogs\my-blog\source\images\快速幂\v2-ea509638c045734248f877b052aa21ac_1440w.jpg" alt="快速幂"></p>
+    <div class="post-content"><p><img src="/../images/%E5%BF%AB%E9%80%9F%E5%B9%82/v2-ea509638c045734248f877b052aa21ac_1440w.jpg" alt="快速幂"></p>
 <p>对于 $ a^n$，如果用一个 n 次，每次乘 a 的循环来计算，时间复杂度为 $O(n)$。<span id="more"></span></p>
 <p>然而每次算一个这么小的数，重复算这么多次，也太屈计算机之才了。借用二分的思维，每次都把 n 对半分，就可以优化到 $O(\log n)$。</p>
 <p>然而这还是不够，一方面不是每次 n 都可以对半分，奇偶讨论很麻烦；另一方面递归会占用额外的内存。这时候就可以<strong>把二分和二进制联系起来</strong>：n 可以被表示为二进制形式，因此 $a^n$ 可以被转化为许多可被二分的数的连乘，此时就非常方便表示了。</p>
