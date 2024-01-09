@@ -160,7 +160,7 @@
 <p>独立是相关系数为 0 的充分不必要条件.</p>
 <h2 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h2><p>For random variables $X$ that $E(X)&#x3D;\mu$ and $D(X)&#x3D;\sigma^2$, have any $\epsilon$:<br>$$<br>P(|X-\mu|\ge \epsilon)\le\frac{\sigma^2}{\epsilon^2}<br>$$<br>or alternative:<br>$$<br>P(|X-\mu|\lt \epsilon)\le 1-\frac{\sigma^2}{\epsilon^2}<br>$$</p>
 <h1 id="七、中心极限定理与数理统计基本概念"><a href="#七、中心极限定理与数理统计基本概念" class="headerlink" title="七、中心极限定理与数理统计基本概念"></a>七、中心极限定理与数理统计基本概念</h1><h2 id="利用中心极限定理求概率"><a href="#利用中心极限定理求概率" class="headerlink" title="利用中心极限定理求概率"></a>利用中心极限定理求概率</h2><p><img src="/../images/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20240107111710583.png" alt="image-20240107111710583"></p>
-<p>或者：<br>$$<br>\frac{\sum_{i&#x3D;1}^{n}X_i-\mu}{\sigma^2}\sim\Phi(x)<br>$$</p>
+<p>或者：<br>$$<br>\frac{\overline{X}-\mu}{\sigma&#x2F;\sqrt{n}}\sim\Phi(x)<br>$$</p>
 <h2 id="数理统计中的三大分布"><a href="#数理统计中的三大分布" class="headerlink" title="数理统计中的三大分布"></a>数理统计中的三大分布</h2><p>分别是：$\chi^2$ 分布，$t$ 分布，$F$ 分布</p>
 <p><img src="/../images/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20240107112737976.png" alt="image-20240107112737976"></p>
 <h1 id="八、参数估计"><a href="#八、参数估计" class="headerlink" title="八、参数估计"></a>八、参数估计</h1><p>求估计量就是随机变量 $X$，求估计值就是观测值 $x$.</p>
@@ -174,7 +174,7 @@
 <p>求均值 $\mu$，方差 $\sigma^2$ 已知：<br>$$<br>\frac{\overline{X}-\mu}{\sigma&#x2F;\sqrt{n}}\sim N(0,1)<br>$$<br>求均值 $\mu$，方差 $\sigma^2$ 未知（注意右边 $n-1$）：<br>$$<br>\frac{\overline{X}-\mu}{s&#x2F;\sqrt{n}}\sim t(n-1)<br>$$<br>其中 $s$ 是标准差。</p>
 <p>做题的时候先求拒绝域，再把数据带入枢轴量与其比对。</p>
 <p><img src="/../images/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20240107170524712.png" alt="image-20240107170524712"></p>
-<h2 id="正态总体方差-sigma-2-的假设检验（-chi-2-检验）"><a href="#正态总体方差-sigma-2-的假设检验（-chi-2-检验）" class="headerlink" title="正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）"></a>正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）</h2><p>求方差 $\sigma_0^2$，已知标准差 $s$（注意两边 $n-1$，而且左边的在分子，分子还有 $s^2$；分母是 $\sigma_2$）：<br>$$<br>\frac{(n-1)s^2}{\sigma^2}\sim \chi^2(n-1)<br>$$<br>做题的时候先求拒绝域，再把数据带入枢轴量与其比对。</p>
+<h2 id="正态总体方差-sigma-2-的假设检验（-chi-2-检验）"><a href="#正态总体方差-sigma-2-的假设检验（-chi-2-检验）" class="headerlink" title="正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）"></a>正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）</h2><p>求方差 $\sigma_0^2$，已知标准差 $s$（注意两边 $n-1$，而且左边的在分子，分子还有 $s^2$；分母是 $\sigma^2$）：<br>$$<br>\frac{(n-1)s^2}{\sigma^2}\sim \chi^2(n-1)<br>$$<br>做题的时候先求拒绝域，再把数据带入枢轴量与其比对。</p>
 <p><img src="/../images/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20240107170835745.png" alt="image-20240107170835745"></p>
 
       </div>
