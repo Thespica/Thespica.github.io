@@ -2,13 +2,13 @@
 title: about
 ---
 
-![](https://www.google.com/logos/doodles/2016/first-day-of-fall-2016-northern-hemisphere-5139283208830976-hp2x.gif)
+![](../images/about/first-day-of-fall-2016-northern-hemisphere.gif)
 
 # 关于我
 
-John，喜欢编程、折腾和思考，热爱开源。
+John, Apache GraphAr (incubating) PPMC.
 
-标准化图存贮格式 [GraphAr](https://github.com/alibaba/GraphAr) Java SDK 的开发者、维护者。
+喜欢编程、折腾和思考，热爱开源。
 
 ---
 
