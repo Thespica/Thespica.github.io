@@ -60,11 +60,9 @@ prismjs:
   tab_replace: ''
 
 # Home page setting
-path: about
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
   per_page: 0 # <= not spilt to multi-page
   order_by: -date
 
