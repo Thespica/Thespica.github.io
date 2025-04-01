@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="迭代器"/><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
+<link rel="canonical" href="http://thespica.github.io/2023/10/31/Iterator/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>迭代器 - The Spica</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">The Spica</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">The Spica</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">迭代器
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-10-31
+        </span><span class="post-category">
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-vs-for-each"><span class="toc-text">for vs. for-each</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterable-vs-Iterator"><span class="toc-text">Iterable vs. Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Java 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Python 实现</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>无需关注细节，即可按照特定顺序依次访问、修改一个集合中的各个元素（这里的修改不包含对集合结构的改动）。</p>
+<p>关键概念：</p>
+<ul>
+<li>Iterable：一个按照特定结构（线性表、树、图等）组织了一系列元素的集合，并且该集合有至少一种线性的方式遍历集合内的每一个元素；</li>
+<li>Element：集合中的最小单元；</li>
+<li>Iterator：包含一个访问 Iterable 的元素次序的规则，可以记录某一时刻访问的状态，并可以根据该状态不直接依赖 Iterable 而得到<strong>当前元素</strong>和<strong>下一状态</strong>，能判断是否完成了遍历。</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="for-vs-for-each"><a href="#for-vs-for-each" class="headerlink" title="for vs. for-each"></a>for vs. for-each</h2><p>传统的基于索引的 for 循环也对应有记录数据的集合，和用于记录状态的下标（指针），但有几个不同：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">for</th>
+<th align="center">for-each</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">粒度</td>
+<td align="center">灵活，繁琐</td>
+<td align="center">单一，便捷</td>
+</tr>
+<tr>
+<td align="center">移动</td>
+<td align="center"><code>idx++</code> 或 <code>ptr = ptr-&gt;next</code></td>
+<td align="center"><code>next()</code> 函数的副作用</td>
+</tr>
+<tr>
+<td align="center">取值</td>
+<td align="center"><code>arr[idx]</code> 或 <code>*ptr</code></td>
+<td align="center"><code>next()</code> 函数的返回值</td>
+</tr>
+</tbody></table>
+<h2 id="Iterable-vs-Iterator"><a href="#Iterable-vs-Iterator" class="headerlink" title="Iterable vs. Iterator"></a>Iterable vs. Iterator</h2><table>
+<thead>
+<tr>
+<th align="center">Iterable</th>
+<th align="center">Iterator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">可以用 for-each 循环遍历的集合</td>
+<td align="center">可以用于遍历一个集合的接口</td>
+</tr>
+<tr>
+<td align="center">需要实现 <code>iterator()</code> 方法</td>
+<td align="center">需要实现 <code>next()</code> 和 <code>hasNext()</code> 方法</td>
+</tr>
+<tr>
+<td align="center">存储数据，不存储状态</td>
+<td align="center">存储状态，可直接取得对应状态的单个数据</td>
+</tr>
+<tr>
+<td align="center">不允许在迭代中改变集合的结构</td>
+<td align="center">允许在迭代中增添、删除元素</td>
+</tr>
+</tbody></table>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><p>Element 元素类（可以是泛型）：自行实现，无特殊要求。</p>
+<p>Aggregate 集合类：继承 <code>java.lang.Iterable&lt;Element&gt;</code>，并实现其用于返回迭代器的 <code>iterator()</code> 函数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Aggregate</span> <span class="keyword">implements</span> <span class="title class_">Iterable</span>&lt;Element&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;Element&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ElementIterator</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Iterator<Eliement> 迭代器类，有取得元素并使迭代器变为下一状态的 <code>next</code> 函数，和用于判断是否还有下一个元素的 <code>hasNext()</code> 函数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElementIterator</span> <span class="keyword">implements</span> <span class="title class_">Iterator</span>&lt;Element&gt; &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">current</span> <span class="operator">=</span> begin();</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> end();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Element <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getNextElement();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cursor != end;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Element <span class="title function_">getNextElement</span><span class="params">()</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python-实现"><a href="#Python-实现" class="headerlink" title="Python 实现"></a>Python 实现</h2><p>Element 元素类：无特殊要求。</p>
+<p>Iterable 集合类：需要实现其用于返回迭代器的 <code>__iter()__</code> 函数。</p>
+<p>Iterator 迭代器类：有一个取得元素并使迭代器变为下一状态的 <code>__next()__</code> 函数，没有下一个元素时，抛出 <code>StopIteration</code> 异常。一个集合和一个迭代器都包含足以完成遍历的信息，即 Iterator 也可以是 Iterable，为了实现这符合直觉的一点，python 要求 Iterator 也拥有 <code>__iter()__</code> 函数，一般返回自己（虽然 CPython 自己并不遵守这一点）。</p>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-iterator-vs-iterable">Differences Between Iterator and Iterable and How to Use Them? | Baeldung</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html#term-iterable">Glossary — Python 3.12.0 documentation</a></li>
+</ul>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://thespica.github.io">John</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://thespica.github.io/2023/10/31/Iterator/">http://thespica.github.io/2023/10/31/Iterator/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2023/12/03/what-skateboarding-taught-me/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">What Skateboarding Taught Me</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2023/06/29/Note-of-Mathematics-Vol-2/">
+        <span class="next-text nav-default">高数下</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer">
+  <script src='https://unpkg.com/mermaid@9.3.0/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+<div class="social-links"><a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2023 - 2025<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">John</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
+</body>
+</html>

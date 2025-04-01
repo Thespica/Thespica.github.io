@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="数据库复习"/><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
+<link rel="canonical" href="http://thespica.github.io/2024/07/02/Note-of-Database/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+</script>
+
+    <title>数据库复习 - The Spica</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">The Spica</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">The Spica</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">数据库复习
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-07-02
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="toc-text">第一章 绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">数据库系统的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F"><span class="toc-text">三级模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%98%A0%E8%B1%A1"><span class="toc-text">二级映象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">第二章 关系数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C"><span class="toc-text">基本集合操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E9%97%A8%E7%9A%84%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C"><span class="toc-text">专门的关系操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-SQL"><span class="toc-text">第三章 SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-SQL"><span class="toc-text">常用 SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%EF%BC%88DDL%EF%BC%89"><span class="toc-text">数据定义语言（DDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80%EF%BC%88DML%EF%BC%89"><span class="toc-text">数据操作语言（DML）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80%EF%BC%88DQL%EF%BC%89"><span class="toc-text">数据查询语言（DQL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8E%A7%E5%88%B6%E8%AF%AD%E8%A8%80%EF%BC%88DCL%EF%BC%89"><span class="toc-text">数据控制语言（DCL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0"><span class="toc-text">聚集函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="toc-text">创建视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%A7%86%E5%9B%BE"><span class="toc-text">查询视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%A7%86%E5%9B%BE"><span class="toc-text">更新视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="toc-text">删除视图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">第四章 数据库安全性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">第五章 数据库完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">实体完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">参照完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">用户定义完整性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA"><span class="toc-text">第六章 关系数据理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%BC%8F"><span class="toc-text">范式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-text">第七章 数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">1. 需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A6%82%E5%BF%B5%E8%AE%BE%E8%AE%A1"><span class="toc-text">2. 概念设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1"><span class="toc-text">3. 逻辑设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%89%A9%E7%90%86%E8%AE%BE%E8%AE%A1"><span class="toc-text">4. 物理设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%9E%E6%96%BD"><span class="toc-text">5. 实施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%B5%8B%E8%AF%95%E5%92%8C%E9%AA%8C%E8%AF%81"><span class="toc-text">6. 测试和验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BC%98%E5%8C%96"><span class="toc-text">7. 维护和优化</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><ol>
+<li>单选 24</li>
+<li>多选 15</li>
+<li>判断 16</li>
+<li>应用题 21</li>
+<li>简答题 24</li>
+</ol>
+<p>主观题、客观题各50分</p>
+<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><ul>
+<li><strong>数据库系统</strong>的特点</li>
+<li><strong>三级模式</strong>结构、<strong>二级映象</strong></li>
+</ul>
+<span id="more"></span>
+
+<h2 id="数据库系统的特点"><a href="#数据库系统的特点" class="headerlink" title="数据库系统的特点"></a>数据库系统的特点</h2><ol>
+<li>数据结构化</li>
+<li>数据共享性高，冗余度低，容易扩展</li>
+<li>数据独立性高<ul>
+<li>物理独立性</li>
+<li>逻辑独立性</li>
+</ul>
+</li>
+</ol>
+<h2 id="三级模式"><a href="#三级模式" class="headerlink" title="三级模式"></a>三级模式</h2><ol>
+<li>外模式（子模式&#x2F;用户模式）：数据库用户能够看见和使用的<strong>局部数据</strong>的<strong>逻辑结构</strong>和<strong>特征</strong>的描述，数据库用户的数据视图，是与<strong>某应用有关</strong>的数据的逻辑表示；</li>
+<li>模式（逻辑模式）：数据库中<strong>全体数据</strong>的<strong>逻辑结构</strong>和<strong>特征</strong>的描述，是所有用户的<strong>公共数据视图</strong>；</li>
+<li>内模式（存储模式）：数据<strong>物理结构</strong>和<strong>存储方法</strong>的描述，是数据在<strong>数据库内部</strong>的组织方式；</li>
+</ol>
+<p><img src="/../images/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/image-20240702153733908.png" alt="image-20240702153733908"></p>
+<h2 id="二级映象"><a href="#二级映象" class="headerlink" title="二级映象"></a>二级映象</h2><ol>
+<li>外模式&#x2F;模式映像：保证了数据的<strong>逻辑独立性</strong>。当模式改变时，对外模式&#x2F;模式的映像做出改变，保证外模式不变，应用程序由外模式编写，从而应用程序不变</li>
+<li>模式&#x2F;内模式映像：保证了数据的<strong>物理独立性</strong>。当数据库的存储结构改变时，对模式&#x2F;内模式映像做出改变，使模式不变，进而应用程序不变</li>
+</ol>
+<h1 id="第二章-关系数据库"><a href="#第二章-关系数据库" class="headerlink" title="第二章 关系数据库"></a>第二章 关系数据库</h1><ul>
+<li>熟练掌握<strong>关系代数</strong>各类运算</li>
+</ul>
+<p>关系代数是关系数据库理论的一个基础部分，包含一组操作，用于从一个或多个关系中获取新的关系。这些操作包括集合操作和专门针对关系的操作。以下是常见的关系代数操作：</p>
+<h2 id="基本集合操作"><a href="#基本集合操作" class="headerlink" title="基本集合操作"></a>基本集合操作</h2><ol>
+<li><strong>并集（Union, $ \cup $）</strong><ul>
+<li>符号：$ R \cup S $</li>
+<li>描述：返回属于关系 $ R $ 或关系 $ S $ 或者同时属于 $ R $ 和 $ S $ 的所有元组。</li>
+<li>条件：$ R $ 和 $ S $ 必须具有相同的属性。</li>
+</ul>
+</li>
+<li><strong>差集（Difference, $ - $）</strong><ul>
+<li>符号：$ R - S $</li>
+<li>描述：返回属于关系 $ R $ 但不属于关系 $ S $ 的所有元组。</li>
+<li>条件：$ R $ 和 $ S $ 必须具有相同的属性。</li>
+</ul>
+</li>
+<li><strong>选择（Selection, $ \sigma $​）</strong><ul>
+<li>符号：$ \sigma_{\text{condition}}(R) $</li>
+<li>描述：返回满足指定条件的关系 $ R $ 中的所有元组。</li>
+<li>示例：$ \sigma_{\text{age} &gt; 30}(R) $ 返回 $ R $ 中年龄大于30的所有元组。</li>
+</ul>
+</li>
+<li><strong>投影（Projection, $ \pi $）</strong><ul>
+<li>符号：$ \pi_{\text{attribute list}}(R) $</li>
+<li>描述：返回关系 $ R $ 中指定属性的所有元组，去掉重复的元组。</li>
+<li>示例：$ \pi_{\text{name, age}}(R) $ 返回 $ R $ 中所有的名字和年龄。</li>
+</ul>
+</li>
+<li><strong>笛卡尔积（Cartesian Product, $ \times $）</strong><ul>
+<li>符号：$ R \times S $</li>
+<li>描述：返回关系 $ R $ 和关系 $ S $ 的所有可能的元组组合。</li>
+</ul>
+</li>
+</ol>
+<h2 id="专门的关系操作"><a href="#专门的关系操作" class="headerlink" title="专门的关系操作"></a>专门的关系操作</h2><ol>
+<li><strong>交集（Intersection, $ \cap $）</strong><ul>
+<li>符号：$ R \cap S $</li>
+<li>描述：返回同时属于关系 $ R $ 和关系 $ S $ 的所有元组。</li>
+<li>条件：$ R $ 和 $ S $ 必须具有相同的属性。</li>
+</ul>
+</li>
+<li><strong>自然连接（Natural Join, $ \bowtie $）</strong><ul>
+<li>符号：$ R \bowtie S $</li>
+<li>描述：返回两个关系 $ R $ 和 $ S $ 中那些在共有属性上值相等的元组的组合。</li>
+</ul>
+</li>
+<li><strong>条件连接（Theta Join, $ \bowtie_{\text{condition}} $）</strong><ul>
+<li>符号：$ R \bowtie_{\text{condition}} S $</li>
+<li>描述：返回两个关系 $ R $ 和 $ S $ 中满足指定条件的元组的组合。</li>
+<li>示例：$ R \bowtie_{\text{R.id} &#x3D; \text{S.id}} S $ 返回 $ R $ 和 $ S $ 中 id 相等的元组。</li>
+</ul>
+</li>
+<li><strong>外连接（Outer Join）</strong><ul>
+<li><strong>左外连接（Left Outer Join, $ \bowtie_{\text{left}} $）</strong><ul>
+<li>符号：$ R \bowtie_{\text{left}} S $</li>
+<li>描述：返回关系 $ R $ 和 $ S $ 中那些在共有属性上值相等的元组，以及 $ R $ 中没有匹配的元组。</li>
+</ul>
+</li>
+<li><strong>右外连接（Right Outer Join, $ \bowtie_{\text{right}} $）</strong><ul>
+<li>符号：$ R \bowtie_{\text{right}} S $</li>
+<li>描述：返回关系 $ R $ 和 $ S $ 中那些在共有属性上值相等的元组，以及 $ S $ 中没有匹配的元组。</li>
+</ul>
+</li>
+<li><strong>全外连接（Full Outer Join, $ \bowtie_{\text{full}} $）</strong><ul>
+<li>符号：$ R \bowtie_{\text{full}} S $</li>
+<li>描述：返回关系 $ R $ 和 $ S $ 中那些在共有属性上值相等的元组，以及 $ R $ 和 $ S $ 中没有匹配的元组。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>除法（Division, $ \div $）</strong><ul>
+<li>符号：$ R \div S $</li>
+<li>描述：返回关系 $ R $ 中那些对于 $ S $ 中的每一个元组在 $ R $ 中都有对应的元组。</li>
+</ul>
+</li>
+</ol>
+<h1 id="第三章-SQL"><a href="#第三章-SQL" class="headerlink" title="第三章 SQL"></a>第三章 SQL</h1><ul>
+<li>熟悉<strong>索引</strong>的分类、使用</li>
+<li>熟练掌握 <strong>SQL</strong> 常用命令的使用</li>
+<li><strong>聚集函数</strong>的使用</li>
+<li><strong>视图</strong>的基本操作、特点</li>
+</ul>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>SQL中的索引用于提高数据库查询性能。它们通过在一列或多列上创建一种快速查找结构，减少查询扫描的行数。索引的类型和使用方法如下：</p>
+<p>分类：</p>
+<ol>
+<li><p><strong>主键索引（Primary Key Index）</strong>：</p>
+<p>聚集索引，是物理索引</p>
+<ul>
+<li><p>每个表只能有一个主键索引。</p>
+</li>
+<li><p>主键索引自动创建，唯一且不能为NULL。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy codeCREATE TABLE employees (</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    name VARCHAR(100),</span><br><span class="line">    department VARCHAR(100)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>唯一索引（Unique Index）</strong>：</p>
+<ul>
+<li><p>确保索引列中的所有值都是唯一的。</p>
+</li>
+<li><p>可以有多个唯一索引。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">CREATE UNIQUE INDEX idx_unique_name ON employees(name);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>复合索引（Composite Index）</strong>：</p>
+<ul>
+<li><p>在多个列上创建的索引，提高多列查询的性能。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">CREATE INDEX idx_name_department ON employees(name, department);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>索引的使用：</p>
+<ol>
+<li><p><strong>创建索引</strong>：</p>
+<ul>
+<li><p>在现有表上创建索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">CREATE INDEX idx_name ON employees(name);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>查看索引</strong>：</p>
+<ul>
+<li><p>显示表的索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SHOW INDEX FROM employees;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>删除索引</strong>：</p>
+<ul>
+<li><p>删除索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">DROP INDEX idx_name ON employees;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>使用索引进行查询优化</strong>：</p>
+<ul>
+<li><p>使用索引的查询示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT * FROM employees WHERE name = &#x27;John&#x27;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>索引在<code>WHERE</code>子句、<code>ORDER BY</code>子句、<code>GROUP BY</code>子句和连接操作中能提高查询性能。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="常用-SQL"><a href="#常用-SQL" class="headerlink" title="常用 SQL"></a>常用 SQL</h2><p>SQL（结构化查询语言）是一种用于管理和操作关系型数据库的标准语言。常用的SQL语句分为以下几类：</p>
+<p><img src="/../images/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/image-20240703171957755.png" alt="image-20240703171957755"></p>
+<h3 id="数据定义语言（DDL）"><a href="#数据定义语言（DDL）" class="headerlink" title="数据定义语言（DDL）"></a>数据定义语言（DDL）</h3><p>用于定义和修改数据库结构，如创建、修改和删除表和索引等。</p>
+<ol>
+<li><p><strong>创建数据库</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE database_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除数据库</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE database_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建表</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name (</span><br><span class="line">    column1 datatype,</span><br><span class="line">    column2 datatype,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除表</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改表</strong>：</p>
+<ul>
+<li>添加列：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> column_name datatype;</span><br></pre></td></tr></table></figure></li>
+<li>删除列：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> column_name;</span><br></pre></td></tr></table></figure></li>
+<li>修改列：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name MODIFY <span class="keyword">COLUMN</span> column_name new_datatype;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="数据操作语言（DML）"><a href="#数据操作语言（DML）" class="headerlink" title="数据操作语言（DML）"></a>数据操作语言（DML）</h3><p>用于操作数据库中的数据，包括插入、更新、删除和查询数据。</p>
+<ol>
+<li><p><strong>插入数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name (column1, column2, ...)</span><br><span class="line"><span class="keyword">VALUES</span> (value1, value2, ...);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>更新数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table_name</span><br><span class="line"><span class="keyword">SET</span> column1 <span class="operator">=</span> value1, column2 <span class="operator">=</span> value2, ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查询数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2, ...</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="数据查询语言（DQL）"><a href="#数据查询语言（DQL）" class="headerlink" title="数据查询语言（DQL）"></a>数据查询语言（DQL）</h3><p>主要用于查询数据库中的数据。</p>
+<ol>
+<li><p><strong>简单查询</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>条件查询</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>排序</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column1 [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>分组</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> column1;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>连接查询</strong>：</p>
+<ul>
+<li>内连接：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.column1, b.column2</span><br><span class="line"><span class="keyword">FROM</span> table1 a</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> table2 b <span class="keyword">ON</span> a.common_column <span class="operator">=</span> b.common_column;</span><br></pre></td></tr></table></figure></li>
+<li>左连接：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.column1, b.column2</span><br><span class="line"><span class="keyword">FROM</span> table1 a</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> table2 b <span class="keyword">ON</span> a.common_column <span class="operator">=</span> b.common_column;</span><br></pre></td></tr></table></figure></li>
+<li>右连接：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.column1, b.column2</span><br><span class="line"><span class="keyword">FROM</span> table1 a</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> table2 b <span class="keyword">ON</span> a.common_column <span class="operator">=</span> b.common_column;</span><br></pre></td></tr></table></figure></li>
+<li>全连接：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.column1, b.column2</span><br><span class="line"><span class="keyword">FROM</span> table1 a</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> table2 b <span class="keyword">ON</span> a.common_column <span class="operator">=</span> b.common_column;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="数据控制语言（DCL）"><a href="#数据控制语言（DCL）" class="headerlink" title="数据控制语言（DCL）"></a>数据控制语言（DCL）</h3><p>用于控制对数据库的访问权限。</p>
+<ol>
+<li><p><strong>授予权限</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> privilege_name <span class="keyword">ON</span> object_name <span class="keyword">TO</span> user_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>收回权限</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege_name <span class="keyword">ON</span> object_name <span class="keyword">FROM</span> user_name;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>假设有一个名为<code>employees</code>的表，包含以下列：<code>id</code>, <code>name</code>, <code>department</code>, <code>salary</code>。</p>
+<ol>
+<li><p><strong>创建表</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employees (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    department <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    salary <span class="type">DECIMAL</span>(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>插入数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> employees (id, name, department, salary)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;John Doe&#x27;</span>, <span class="string">&#x27;IT&#x27;</span>, <span class="number">60000.00</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查询数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>更新数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employees</span><br><span class="line"><span class="keyword">SET</span> salary <span class="operator">=</span> <span class="number">65000.00</span></span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除数据</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这些是常用的SQL语句，通过这些基本操作，可以进行数据库的创建、管理和数据操作。</p>
+<h2 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h2><p>SQL中的聚集函数（Aggregate Functions）用于对一组值执行计算，并返回单个值。这些函数通常与<code>GROUP BY</code>子句结合使用，以便对数据进行分组和汇总。以下是一些常见的聚集函数及其用法：</p>
+<ol>
+<li><p>**COUNT()**：计算某列中的行数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT COUNT(*) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中所有行的总数。</p>
+</li>
+<li><p>**SUM()**：计算某列中所有数值的总和。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT SUM(salary) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中<code>salary</code>列所有值的总和。</p>
+</li>
+<li><p>**AVG()**：计算某列中所有数值的平均值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT AVG(salary) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中<code>salary</code>列所有值的平均值。</p>
+</li>
+<li><p>**MIN()**：返回某列中的最小值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT MIN(salary) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中<code>salary</code>列的最小值。</p>
+</li>
+<li><p>**MAX()**：返回某列中的最大值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT MAX(salary) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中<code>salary</code>列的最大值。</p>
+</li>
+<li><p>**GROUP_CONCAT()**：将某列中的值连接成一个字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql</span><br><span class="line">Copy code</span><br><span class="line">SELECT GROUP_CONCAT(name) FROM employees;</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>employees</code>表中<code>name</code>列的所有值连接成的字符串。</p>
+</li>
+</ol>
+<p>使用示例：</p>
+<p>假设有一个名为<code>employees</code>的表，包含以下列：<code>id</code>, <code>name</code>, <code>department</code>, <code>salary</code>。我们可以使用聚集函数来获取每个部门的工资总和和平均值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy codeSELECT department, SUM(salary) AS total_salary, AVG(salary) AS average_salary</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department;</span><br></pre></td></tr></table></figure>
+
+<p>这条查询将返回每个部门的工资总和和平均值。</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>在SQL中，视图是一个虚拟表，它的内容是根据SQL查询定义的。视图可以让你简化复杂查询的使用，使数据访问更加方便。以下是创建和查询视图的基本步骤：</p>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><p>要创建视图，你可以使用<code>CREATE VIEW</code>语句。语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名 <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> 列<span class="number">1</span>, 列<span class="number">2</span>, ...</span><br><span class="line"><span class="keyword">FROM</span> 表名</span><br><span class="line"><span class="keyword">WHERE</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<p>举个例子，假设你有一个名为<code>employees</code>的表，包含<code>id</code>, <code>name</code>, <code>salary</code>, <code>department</code>等列。你想创建一个视图，显示工资超过5000的员工信息：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> high_salary_employees <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> id, name, salary</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&gt;</span> <span class="number">5000</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询视图"><a href="#查询视图" class="headerlink" title="查询视图"></a>查询视图</h3><p>创建视图后，可以像查询表一样查询视图。语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列<span class="number">1</span>, 列<span class="number">2</span>, ...</span><br><span class="line"><span class="keyword">FROM</span> 视图名</span><br><span class="line"><span class="keyword">WHERE</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<p>例如，要查询刚刚创建的视图<code>high_salary_employees</code>中的所有数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> high_salary_employees;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h3><p>某些情况下，你可以更新视图中的数据。不过，视图是否可以更新取决于视图的定义和数据库管理系统（DBMS）的支持。如果视图可以更新，语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 视图名</span><br><span class="line"><span class="keyword">SET</span> 列 <span class="operator">=</span> 新值</span><br><span class="line"><span class="keyword">WHERE</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<p>例如，更新视图中某个员工的工资：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> high_salary_employees</span><br><span class="line"><span class="keyword">SET</span> salary <span class="operator">=</span> <span class="number">6000</span></span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><p>如果不再需要视图，可以使用<code>DROP VIEW</code>语句删除视图。语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> 视图名;</span><br></pre></td></tr></table></figure>
+
+<p>例如，删除<code>high_salary_employees</code>视图：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> high_salary_employees;</span><br></pre></td></tr></table></figure>
+
+<p>这些是创建和查询视图的基本操作。视图的使用可以帮助你简化复杂的查询，并提高数据管理的灵活性和安全性。</p>
+<p><strong>特点</strong>：视图是基于查询的虚拟表，可以简化复杂查询，提供数据的安全性和独立性。</p>
+<h1 id="第四章-数据库安全性"><a href="#第四章-数据库安全性" class="headerlink" title="第四章 数据库安全性"></a>第四章 数据库安全性</h1><ul>
+<li>了解<strong>自主存取控制</strong>的实现方法</li>
+</ul>
+<p>自主存取控制方法：定义各个用户对不同数据对象的存取权限。当用户对数据库访问时首先检查用户的存取权限。防止不合法用户对数据库的存取。</p>
+<p>强制存取控制方法：每一个数据对象被(强制地)标以一定的密级，每一个用户也被(强制地)授予某一个级别的许可证。系统规定只有具有某一许可证级别的用户才能存取某一个密级的数据对象。</p>
+<h1 id="第五章-数据库完整性"><a href="#第五章-数据库完整性" class="headerlink" title="第五章 数据库完整性"></a>第五章 数据库完整性</h1><ul>
+<li>掌握<strong>三类完整性</strong>的定义方法</li>
+</ul>
+<h2 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h2><p>主码唯一且非空。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">PRIMARY</span> KEY(列名<span class="number">1</span>, 列名n)</span><br></pre></td></tr></table></figure>
+
+<p>检查与违约处理：检查主码是否唯一，如果不唯一则拒绝插入或修改；检查主码各个属性是否为空，只要有一个为<br>空就拒绝插入或修改</p>
+<h2 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h2><p>外码的约束。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FOREIGN</span> KEY(列名) <span class="keyword">REFERENCES</span> 被参照表(列名)</span><br></pre></td></tr></table></figure>
+
+<p>检查：对被参照表和参照表进行增删改操作时可能会破坏参照完整性，必须检查以保证两个表的相容性<br>违约处理：外码约束可以在创建参照表时说明不同的违约策略</p>
+<h2 id="用户定义完整性"><a href="#用户定义完整性" class="headerlink" title="用户定义完整性"></a>用户定义完整性</h2><p>属性上约束条件的定义</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 课程</span><br><span class="line">(</span><br><span class="line">课程号 <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">课程名 <span class="type">CHAR</span>(<span class="number">10</span>) <span class="keyword">UNIQUE</span>,</span><br><span class="line">先行课号 <span class="type">CHAR</span>(<span class="number">6</span>)</span><br><span class="line">课程类型 <span class="type">CHAR</span>(<span class="number">6</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>, <span class="keyword">CHECK</span>(课程类型 <span class="keyword">IN</span>（’选修’，’必修’))，</span><br><span class="line">学分 <span class="type">INT</span>, </span><br><span class="line"><span class="keyword">FOREIGN</span> KEY(先行课号) <span class="keyword">REFERENCES</span> 课程(课程号)，</span><br><span class="line"><span class="keyword">CHECK</span>( 课程类型<span class="operator">=</span>’必修’ <span class="keyword">OR</span> 学分<span class="operator">&lt;=</span><span class="number">3</span>)</span><br><span class="line">)	</span><br></pre></td></tr></table></figure>
+
+<p>1、属性上的约束条件<br>非空NOT NULL<br>列值唯一UNIQUE<br>检查列值是否满足一个表达式CHECK<br>检查和违约处理：当向表中插入元组或者修改属性值时，关系数据库管理系统将检查属性上的约束条件是否被满足，<br>如果不满足则操作被拒绝<br>2、元组上的约束条件<br>在CREATE TABLE语句中可以用CHECK短语定义元组上的约束条件，元组级的限制可以设置不同属性之间的取值<br>的相互约束条件<br>检查和违约处理：当向表中插入元组或者修改属性值时，关系数据库管理系统将检查元组上的约束条件是否被满足，<br>如果不满足则操作被拒绝</p>
+<h1 id="第六章-关系数据理论"><a href="#第六章-关系数据理论" class="headerlink" title="第六章 关系数据理论"></a>第六章 关系数据理论</h1><ul>
+<li>求候选码</li>
+<li>熟练掌握从 1NF 到 BCNF 的概念</li>
+<li>对给定的<strong>关系模式</strong>，会判定<strong>范式级别</strong></li>
+</ul>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><ol>
+<li><strong>第一范式（1NF）</strong>：所有属性值必须是原子值，不可再分。</li>
+<li><strong>第二范式（2NF）</strong>：在 1NF 的基础上，非主属性<strong>完全依赖</strong>于主键。</li>
+<li><strong>第三范式（3NF）</strong>：在 2NF 的基础上，<strong>消除</strong>非主属性对主键的<strong>传递依赖</strong>。</li>
+<li><strong>巴斯-科德范式（BCNF）</strong>：在 3NF 的基础上，任何非平凡的函数依赖X-&gt;Y中，X必须是超级键。</li>
+</ol>
+<p>简答：请简述“规范化”理论主要应用在数据库设计的那个阶段？“规范化”理论的优化目标是什么？在“规范化”理论中提高一个关系模式范式等级的具体方法是什么？在对数据库设计进行优化时，是否规范化程度越高越好，给出判断并阐明原因？</p>
+<p>答：</p>
+<ol>
+<li>“规范化”理论主要应用在数据库逻辑结构设计阶段（对全局逻辑结构进行优化）。（1分）</li>
+<li>“规范化”理论的优化目标是：消除数据冗余、各类操作异常。（1分）</li>
+<li>在“规范化”理论中提高一个关系模式范式等级的具体方法是：对关系模式进行分解，消除属性间不好的数据依赖关系（函数，非函数）。（1分）</li>
+<li>否。（1分）因为随着范式等级的提高，查询效率会减低。（1分）主要原因是：规范化的基本思想是将关系模式进行拆分，使其中不属于同一主题的数据项“分离”。而用户的查询经常涉及到多个表的数据，如果规范化程度过高（数据过于分离），查询中会涉及大量表的连接操作，导致较高的查询开销和较低的查询效率。（1分）</li>
+</ol>
+<h1 id="第七章-数据库设计"><a href="#第七章-数据库设计" class="headerlink" title="第七章 数据库设计"></a>第七章 数据库设计</h1><ul>
+<li>重点掌握<strong>概念设计</strong>与<strong>逻辑设计</strong>两个阶段的任务</li>
+<li>给出语义会画 <strong>ER 图</strong></li>
+<li>会将 <strong>ER 图</strong> 转化为对应的<strong>关系模式</strong></li>
+</ul>
+<p>数据库设计是创建一个有效且高效的数据库系统的关键过程。以下是数据库设计的主要步骤：</p>
+<h2 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. <strong>需求分析</strong></h2><p>在这个阶段，数据库设计师需要与客户或最终用户沟通，了解他们的需求和期望。目标是明确数据库需要存储哪些数据，以及这些数据将如何使用。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>收集需求：与利益相关者会面，收集关于数据库需求的信息。</li>
+<li>分析需求：分析收集到的信息，确定数据库需要支持的功能和数据。</li>
+<li>文档化需求：将需求记录在文档中，以便在设计和开发过程中参考。</li>
+</ul>
+<h2 id="2-概念设计"><a href="#2-概念设计" class="headerlink" title="2. 概念设计"></a>2. <strong>概念设计</strong></h2><p>在概念设计阶段，使用高层次的数据模型（如实体-关系图，ER图）来表示数据库的逻辑结构。这一步不涉及具体的数据库实现细节。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>确定实体：确定数据库中需要存储的主要实体（如客户、订单、产品等）。</li>
+<li>定义属性：为每个实体定义属性（如客户的姓名、地址、电话等）。</li>
+<li>确定关系：定义实体之间的关系（如客户和订单之间的关系）。</li>
+<li>创建ER图：使用图形工具创建ER图，表示实体、属性和关系。</li>
+</ul>
+<h2 id="3-逻辑设计"><a href="#3-逻辑设计" class="headerlink" title="3. 逻辑设计"></a>3. <strong>逻辑设计</strong></h2><p>逻辑设计将概念设计转换为特定数据库管理系统（DBMS）支持的逻辑模型（如关系模型）。这一步确定具体的表结构、列、数据类型和约束。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>将ER图转换为关系模型：将实体和关系转换为表和外键。</li>
+<li>定义表结构：为每个实体创建表，并定义列和数据类型。</li>
+<li>设置约束：定义主键、外键、唯一性约束和其他完整性约束。</li>
+</ul>
+<h2 id="4-物理设计"><a href="#4-物理设计" class="headerlink" title="4. 物理设计"></a>4. <strong>物理设计</strong></h2><p>在物理设计阶段，确定如何在硬件上实现数据库。这包括选择存储结构、索引、分区等，以优化数据库的性能和存储效率。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>选择存储结构：决定表和索引的存储方式。</li>
+<li>创建索引：根据查询需求创建适当的索引。</li>
+<li>分区设计：对于大规模数据库，设计表分区以提高性能。</li>
+<li>配置数据库参数：调整数据库参数以优化性能。</li>
+</ul>
+<h2 id="5-实施"><a href="#5-实施" class="headerlink" title="5. 实施"></a>5. <strong>实施</strong></h2><p>在实施阶段，使用具体的DBMS（如MySQL、PostgreSQL、Oracle）来创建数据库和相关对象（如表、视图、存储过程）。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>创建数据库：在DBMS中创建数据库。</li>
+<li>创建表和约束：根据逻辑设计创建表和约束。</li>
+<li>创建索引：根据物理设计创建索引。</li>
+<li>导入数据：将初始数据导入数据库。</li>
+</ul>
+<h2 id="6-测试和验证"><a href="#6-测试和验证" class="headerlink" title="6. 测试和验证"></a>6. <strong>测试和验证</strong></h2><p>在测试和验证阶段，确保数据库设计满足所有需求，并且数据库操作正常运行。测试可能包括功能测试、性能测试和安全测试。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>功能测试：验证数据库是否按预期工作。</li>
+<li>性能测试：评估数据库在高负载下的性能。</li>
+<li>安全测试：检查数据库的安全性，确保数据安全。</li>
+</ul>
+<h2 id="7-维护和优化"><a href="#7-维护和优化" class="headerlink" title="7. 维护和优化"></a>7. <strong>维护和优化</strong></h2><p>数据库设计完成并投入使用后，定期维护和优化是必要的，以确保数据库持续高效运行。</p>
+<p><strong>步骤：</strong></p>
+<ul>
+<li>监控性能：使用监控工具跟踪数据库性能。</li>
+<li>进行优化：根据监控结果进行必要的优化，如调整索引、优化查询等。</li>
+<li>备份和恢复：定期备份数据库，制定恢复计划以应对数据丢失。</li>
+</ul>
+<p>通过遵循这些步骤，可以设计出一个结构合理、高效且满足需求的数据库系统。</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://thespica.github.io">John</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://thespica.github.io/2024/07/02/Note-of-Database/">http://thespica.github.io/2024/07/02/Note-of-Database/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2025/01/01/Note-of-OS/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">操作系统复习</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2024/06/28/Note-of-Computer-Component/">
+        <span class="next-text nav-default">计组复习</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer">
+  <script src='https://unpkg.com/mermaid@9.3.0/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+<div class="social-links"><a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2023 - 2025<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">John</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
+</body>
+</html>
