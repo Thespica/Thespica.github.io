@@ -1,5 +1,5 @@
 ---
-title: OSPP 经验分享
+title: OSPP 申请经验分享
 date: 2025-05-17 14:26:17
 tags: OSPP
 ---
