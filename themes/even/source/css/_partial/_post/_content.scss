@@ -39,8 +39,9 @@
   }
 
   ul {
-    padding-left: 0;
-    list-style: inside;
+    // fix list: https://github.com/ahonn/hexo-theme-even/issues/273
+    //padding-left: 0;
+    //list-style: inside;
 
     li {
       input[type="checkbox"] {
