@@ -722,10 +722,6 @@ h6 {
 .post .post-content a.fancybox {
   border: 0;
 }
-.post .post-content ul {
-  padding-left: 0;
-  list-style: inside;
-}
 .post .post-content ul li input[type=checkbox] {
   margin-right: 5px;
 }
