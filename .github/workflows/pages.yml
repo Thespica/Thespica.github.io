@@ -1,39 +1,44 @@
-name: Pages
+name: Deploy Hexo Blog
 
 on:
   push:
     branches:
-      - main # default branch
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - 'LICENSE'
+
+  # 支持手动触发
+  workflow_dispatch:
 
 jobs:
-  pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Use Node.js 18.x
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-
-      - name: Cache NPM dependencies
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-cache
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache
+          node-version: "20"
+          cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
-        
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          commit_message: "deploy: ${{ github.event.head_commit.message }}"
