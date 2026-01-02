@@ -42,10 +42,10 @@ latex: true
 
 # Mermaid Chart
 mermaid:
-  enable: true 
+  enable: true
   version: "9.3.0"
-  options: 
-    #startOnload: true 
+  options:
+    #startOnload: true
 
 copyright:
   enable: true
@@ -84,6 +84,8 @@ social:
 leancloud:
   app_id:
   app_key:
+  server_url:
+  cdn:
 
 # Baidu Analytics
 baidu_analytics:
@@ -138,4 +140,4 @@ utterances:
 # ===========================================
 # Version
 # ===========================================
-version: 2.11.1
+version: 3.0.0
