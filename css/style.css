@@ -762,7 +762,8 @@ h6 {
 .post .post-content table thead {
   background: #f8f5ec;
 }
-.post .post-content table th, .post .post-content table td {
+.post .post-content table th,
+.post .post-content table td {
   padding: 5px 15px;
   border: 1px double #f4efe1;
 }

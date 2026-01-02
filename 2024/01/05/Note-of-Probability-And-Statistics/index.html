@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><meta charset="UTF-8"/>
+
+<head>
+  <!-- Website mata -->
+<meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-
+<!-- Disable transformation -->
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -13,23 +16,67 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="概率论与数理统计"/><link rel="alternate" href="/default" title="The Spica" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
-<link rel="canonical" href="http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/"/>
+<!-- Website description -->
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+<meta name="description" content="概率论与数理统计" />
+
+
+<!-- Website keywords -->
+
+
+
+
+<!-- Website rss -->
+
+<link rel="alternate" href="/default" title="The Spica" >
+
+
+<!-- Website favicon -->
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3.0.0" />
+
+
+<!-- Canonical, good for google search engine -->
+<link rel="canonical" href="http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/" />
+
+<!-- Fancybox styling -->
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+<!-- MathJax (LaTeX) support -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });  
   </script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.1" />
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<!-- Theme styling -->
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=3.0.0" />
+
+<!-- Analytics and push -->
+
+
+
+  
+
+
+
+<!-- LeanCloud Counter -->
+
 
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
+  window.config = {"leancloud":{"app_id":null,"app_key":null,"server_url":null,"cdn":null},"toc":true,"fancybox":true,"latex":true};
 </script>
+  
+  <title>概率论与数理统计 - The Spica</title>
 
-    <title>概率论与数理统计 - The Spica</title>
-  <meta name="generator" content="Hexo 8.1.1"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body><div id="mobile-navbar" class="mobile-navbar">
+<body>
+  <div class="scrollPercentage"></div>
+  <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
     <a href="/." class="logo">The Spica</a>
   </div>
@@ -41,75 +88,138 @@
 </div>
 
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">Home
-          </li>
-      </a><a href="/archives/">
-        <li class="mobile-menu-item">Archives
-          </li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories
-          </li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags
-          </li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About
-          </li>
-      </a></ul>
+  <ul class="mobile-menu-list">
+    
+    <a href="/">
+      <li class="mobile-menu-item">
+        
+        
+        Home              </li>
+    </a>
+    
+    <a href="/archives/">
+      <li class="mobile-menu-item">
+        
+        
+        Archives              </li>
+    </a>
+    
+    <a href="/categories/">
+      <li class="mobile-menu-item">
+        
+        
+        Categories              </li>
+    </a>
+    
+    <a href="/tags/">
+      <li class="mobile-menu-item">
+        
+        
+        Tags              </li>
+    </a>
+    
+    <a href="/about/">
+      <li class="mobile-menu-item">
+        
+        
+        About              </li>
+    </a>
+    
+  </ul>
 </nav>
-<div class="container" id="mobile-panel">
-      <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">The Spica</a>
-</div>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+      <div class="logo-wrapper">  
+  <a href="/." class="logo">The Spica</a>  
+</div>  
+  
+<nav class="site-navbar">  
+    
+    <ul id="menu" class="menu">  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/">  
+              
+              
+              Home  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/archives/">  
+              
+              
+              Archives  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/categories/">  
+              
+              
+              Categories  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/tags/">  
+              
+              
+              Tags  
+              
+          </a>  
+        </li>  
+        
+        <li class="menu-item">  
+          <a class="menu-item-link" href="/about/">  
+              
+              
+              About  
+              
+          </a>  
+        </li>  
+        
+    </ul>  
+    
+</nav>  
 
-<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
-          <a class="menu-item-link" href="/">
-            Home
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/archives/">
-            Archives
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/categories/">
-            Categories
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/tags/">
-            Tags
-            </a>
-        </li>
-      <li class="menu-item">
-          <a class="menu-item-link" href="/about/">
-            About
-            </a>
-        </li>
-      </ul></nav>
-</header>
-
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content"><article class="post">
-    <header class="post-header">
-      <h1 class="post-title">概率论与数理统计
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-01-05
-        </span></div>
     </header>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      概率论与数理统计
+      
+    </h1>
 
-    <div class="post-toc" id="post-toc">
+    <div class="post-meta">
+      <span class="post-time">
+        2024-01-05
+      </span>
+      
+      
+      
+    </div>
+  </header>
+
+  
+  <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-text">一、随机事件及其概率（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-text">二、随机事件及其概率（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Law-of-total-probability"><span class="toc-text">Law of total probability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bayes%E2%80%99-theorem"><span class="toc-text">Bayes’ theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binomial-distribution"><span class="toc-text">Binomial distribution</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-text">三、一维随机变量及其分布（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-text">四、一维随机变量及其分布（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poisson-distribution"><span class="toc-text">Poisson distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Continuous-uniform-distribution"><span class="toc-text">Continuous uniform distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponential-distribution"><span class="toc-text">Exponential distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-distribution"><span class="toc-text">Normal distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-text">定理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83"><span class="toc-text">五、二维随机变量及其分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E5%88%86%E5%B8%83"><span class="toc-text">联合分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-text">边缘概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83"><span class="toc-text">条件分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B"><span class="toc-text">相互独立</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81"><span class="toc-text">六、随机变量的数字特征</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B"><span class="toc-text">期望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE"><span class="toc-text">方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE"><span class="toc-text">协方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-text">相关系数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-text">切比雪夫不等式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">七、中心极限定理与数理统计基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E6%B1%82%E6%A6%82%E7%8E%87"><span class="toc-text">利用中心极限定理求概率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83"><span class="toc-text">数理统计中的三大分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="toc-text">八、参数估计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E4%BC%B0%E8%AE%A1%EF%BC%9A%E7%9F%A9%E4%BC%B0%E8%AE%A1%E5%92%8C%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-text">点估计：矩估计和最大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E5%81%8F%E6%80%A7%E4%B8%8E%E6%9C%89%E6%95%88%E6%80%A7"><span class="toc-text">估计量的无偏性与有效性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-text">区间估计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">九、假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E4%B8%8B%E5%9D%87%E5%80%BC-mu-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%88-U-%E6%A3%80%E9%AA%8C%EF%BC%8C-T-%E6%A3%80%E9%AA%8C%EF%BC%89"><span class="toc-text">正态总体下均值 $\mu$ 的假设检验（$U$ 检验，$T$ 检验）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE-sigma-2-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%88-chi-2-%E6%A3%80%E9%AA%8C%EF%BC%89"><span class="toc-text">正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">一、随机事件及其概率（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、随机事件及其概率（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Law-of-total-probability"><span class="toc-number">2.1.</span> <span class="toc-text">Law of total probability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bayes%E2%80%99-theorem"><span class="toc-number">2.2.</span> <span class="toc-text">Bayes’ theorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binomial-distribution"><span class="toc-number">2.3.</span> <span class="toc-text">Binomial distribution</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">三、一维随机变量及其分布（一）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88%E4%BA%8C%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、一维随机变量及其分布（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poisson-distribution"><span class="toc-number">4.1.</span> <span class="toc-text">Poisson distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Continuous-uniform-distribution"><span class="toc-number">4.2.</span> <span class="toc-text">Continuous uniform distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponential-distribution"><span class="toc-number">4.3.</span> <span class="toc-text">Exponential distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-distribution"><span class="toc-number">4.4.</span> <span class="toc-text">Normal distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">4.5.</span> <span class="toc-text">定理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83"><span class="toc-number">5.</span> <span class="toc-text">五、二维随机变量及其分布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E5%88%86%E5%B8%83"><span class="toc-number">5.1.</span> <span class="toc-text">联合分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">5.2.</span> <span class="toc-text">边缘概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83"><span class="toc-number">5.3.</span> <span class="toc-text">条件分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B"><span class="toc-number">5.4.</span> <span class="toc-text">相互独立</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81"><span class="toc-number">6.</span> <span class="toc-text">六、随机变量的数字特征</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B"><span class="toc-number">6.1.</span> <span class="toc-text">期望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE"><span class="toc-number">6.2.</span> <span class="toc-text">方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE"><span class="toc-number">6.3.</span> <span class="toc-text">协方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-number">6.4.</span> <span class="toc-text">相关系数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">6.5.</span> <span class="toc-text">切比雪夫不等式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">7.</span> <span class="toc-text">七、中心极限定理与数理统计基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86%E6%B1%82%E6%A6%82%E7%8E%87"><span class="toc-number">7.1.</span> <span class="toc-text">利用中心极限定理求概率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83"><span class="toc-number">7.2.</span> <span class="toc-text">数理统计中的三大分布</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="toc-number">8.</span> <span class="toc-text">八、参数估计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E4%BC%B0%E8%AE%A1%EF%BC%9A%E7%9F%A9%E4%BC%B0%E8%AE%A1%E5%92%8C%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-number">8.1.</span> <span class="toc-text">点估计：矩估计和最大似然估计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E5%81%8F%E6%80%A7%E4%B8%8E%E6%9C%89%E6%95%88%E6%80%A7"><span class="toc-number">8.2.</span> <span class="toc-text">估计量的无偏性与有效性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">8.3.</span> <span class="toc-text">区间估计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">9.</span> <span class="toc-text">九、假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E4%B8%8B%E5%9D%87%E5%80%BC-mu-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%88-U-%E6%A3%80%E9%AA%8C%EF%BC%8C-T-%E6%A3%80%E9%AA%8C%EF%BC%89"><span class="toc-number">9.1.</span> <span class="toc-text">正态总体下均值 $\mu$ 的假设检验（$U$ 检验，$T$ 检验）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE-sigma-2-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%88-chi-2-%E6%A3%80%E9%AA%8C%EF%BC%89"><span class="toc-number">9.2.</span> <span class="toc-text">正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）</span></a></li></ol></li></ol>
     </div>
-  </div><div class="post-content"><h1 id="一、随机事件及其概率（一）"><a href="#一、随机事件及其概率（一）" class="headerlink" title="一、随机事件及其概率（一）"></a>一、随机事件及其概率（一）</h1><p>Addition: $P(A\cup b)&#x3D;P(A)+P(B)-P(AB)$</p>
+  </div>
+  
+
+  <div class="post-content">
+    
+    <h1 id="一、随机事件及其概率（一）"><a href="#一、随机事件及其概率（一）" class="headerlink" title="一、随机事件及其概率（一）"></a>一、随机事件及其概率（一）</h1><p>Addition: $P(A\cup b)&#x3D;P(A)+P(B)-P(AB)$</p>
 <p>Subtraction: $P(A-B)&#x3D;P(A)-P(AB)$</p>
 <p>Multiplication: $P(AB)&#x3D;P(A|B)P(B)$</p>
 <p>Division(Conditional Probability): $P(A|B)&#x3D;\frac{P(AB)}{P(B)}$</p>
@@ -177,71 +287,195 @@
 <h2 id="正态总体方差-sigma-2-的假设检验（-chi-2-检验）"><a href="#正态总体方差-sigma-2-的假设检验（-chi-2-检验）" class="headerlink" title="正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）"></a>正态总体方差 $\sigma^2$ 的假设检验（$\chi^2$ 检验）</h2><p>求方差 $\sigma_0^2$，已知标准差 $s$（注意两边 $n-1$，而且左边的在分子，分子还有 $s^2$；分母是 $\sigma^2$）：<br>$$<br>\frac{(n-1)s^2}{\sigma^2}\sim \chi^2(n-1)<br>$$<br>做题的时候先求拒绝域，再把数据带入枢轴量与其比对。</p>
 <p><img src="/../images/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20240107170835745.png" alt="image-20240107170835745"></p>
 
-      </div>
-      <div class="post-copyright">
-    <p class="copyright-item">
-      <span>Author: </span>
-      <a href="http://thespica.github.io">John</a>
-    </p>
-    <p class="copyright-item">
-      <span>Link: </span>
-      <a href="http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/">http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/</a>
-    </p>
-    <p class="copyright-item">
-      <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
-    </p>
+    
   </div>
-      <footer class="post-footer">
-        
-        <nav class="post-nav"><a class="prev" href="/2024/01/07/Note-of-Digital-circuit/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">数电期末</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2023/12/03/what-skateboarding-taught-me/">
-        <span class="next-text nav-default">What Skateboarding Taught Me</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
-      </main>
 
-      <footer id="footer" class="footer">
+  
+  <!-- Post Copyright -->
+
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span>Author: </span>
+    <a href="http://thespica.github.io">John</a>
+  </p>
+  <p class="copyright-item">
+    <span>Link: </span>
+    <a href="http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/">http://thespica.github.io/2024/01/05/Note-of-Probability-And-Statistics/</a>
+  </p>
+  <p class="copyright-item">
+    <span>License: </span>
+    
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+  </p>
+</div>
+
+    
+
+  
+
+  
+  <footer class="post-footer">
+    
+      
+  <nav class="post-nav">  
+      
+      <a class="prev" href="/2024/01/07/Note-of-Digital-circuit/">  
+        <i class="iconfont icon-left"></i>  
+        <span class="prev-text nav-default">数电期末</span>  
+        <span class="prev-text nav-mobile">Prev</span>  
+      </a>  
+      
+      
+      <a class="next" href="/2023/12/03/what-skateboarding-taught-me/">  
+        <span class="next-text nav-default">What Skateboarding Taught Me</span>  
+        <span class="prev-text nav-mobile">Next</span>  
+        <i class="iconfont icon-right"></i>  
+      </a>  
+      
+  </nav>  
+  
+
+  </footer>
+  
+
+</article>
+        </div>
+          
+  <div class="comments" id="comments">  
+      
+  </div>  
+  
+
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      
   <script src='https://unpkg.com/mermaid@9.3.0/dist/mermaid.min.js'></script>
   <script>
     if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
+      mermaid.initialize({ theme: 'forest' });
     }
   </script>
+  
+    <!-- Social Links -->
+    
+<div class="social-links">
+  
+  
+  
+  
+  <a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-<div class="social-links"><a href="mailto:thespica@qq.com" class="iconfont icon-email" title="email"></a>
-        <a target="_blank" rel="noopener" href="https://github.com/Thespica" class="iconfont icon-github" title="github"></a>
-        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
-    </div><div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
-  </span>
-
-  <span class="copyright-year">&copy;2023 - 2026<span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">John</span>
-  </span>
+  
+  
+  <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
-</footer>
 
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
+
+
+      <div class="copyright">
+        <span class="power-by">
+          Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+        </span>
+        <span class="division">|</span>
+        <span class="theme-info">
+          Theme -
+            <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+        </span>
+
+        <span class="copyright-year">
+          <span>
+            
+              &copy;
+              
+                2023 - 2026                    
+          </span>
+
+          <span class="heart">
+            <i class="iconfont icon-heart"></i>
+          </span>
+
+          <span class="author">John</span>
+        </span>
+
       </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/src/even.js?v=2.11.1"></script>
+    </footer>
+    <div class="back-to-top" id="back-to-top"> <i class="iconfont icon-up"></i> </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+
+
+
+<script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/even.js?v=3.0.0"></script>
 </body>
+
 </html>
